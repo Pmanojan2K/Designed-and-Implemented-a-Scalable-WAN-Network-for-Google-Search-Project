@@ -1,0 +1,1138 @@
+Sat Mar 9 14:50:59 2024   Multilayer Switch0   Switch>enable 
+Sat Mar 9 14:51:01 2024   Multilayer Switch0   Switch#configure terminal 
+Sat Mar 9 14:51:10 2024   Multilayer Switch0   Switch(config)#hostname LAN-A1
+Sat Mar 9 14:51:27 2024   Multilayer Switch0   LAN-A1(config)#interface range fastEthernet 0/22-24
+Sat Mar 9 14:51:44 2024   Multilayer Switch0   LAN-A1(config-if-range)#channel-group 1 mode active 
+Sat Mar 9 14:51:51 2024   Multilayer Switch0   LAN-A1(config-if-range)#channel-protocol lacp 
+Sat Mar 9 14:51:52 2024   Multilayer Switch0   LAN-A1(config-if-range)#exit 
+Sat Mar 9 14:51:56 2024   Multilayer Switch0   LAN-A1(config)#interface port-channel 1
+Sat Mar 9 14:52:00 2024   Multilayer Switch0   LAN-A1(config-if)#switchport trunk encapsulation dot1q 
+Sat Mar 9 14:52:03 2024   Multilayer Switch0   LAN-A1(config-if)#switchport mode trunk 
+Sat Mar 9 14:52:05 2024   Multilayer Switch0   LAN-A1(config-if)#end
+Sat Mar 9 14:52:06 2024   Multilayer Switch0   LAN-A1#write 
+Sat Mar 9 14:52:13 2024   Multilayer Switch1   Switch>enable 
+Sat Mar 9 14:52:15 2024   Multilayer Switch1   Switch#configure terminal 
+Sat Mar 9 14:52:21 2024   Multilayer Switch1   Switch(config)#hostname LAN-A2
+Sat Mar 9 14:52:29 2024   Multilayer Switch1   LAN-A2(config)#interface range fastEthernet 0/22-24
+Sat Mar 9 14:52:39 2024   Multilayer Switch1   LAN-A2(config-if-range)#channel-group 1 mode passive 
+Sat Mar 9 14:52:43 2024   Multilayer Switch1   LAN-A2(config-if-range)#channel-protocol lacp 
+Sat Mar 9 14:52:44 2024   Multilayer Switch1   LAN-A2(config-if-range)#exit 
+Sat Mar 9 14:52:49 2024   Multilayer Switch1   LAN-A2(config)#interface port-channel 1
+Sat Mar 9 14:52:51 2024   Multilayer Switch1   LAN-A2(config-if)#interface port-channel 1
+Sat Mar 9 14:52:57 2024   Multilayer Switch1   LAN-A2(config-if)#end
+Sat Mar 9 14:52:58 2024   Multilayer Switch1   LAN-A2#write 
+Sat Mar 9 14:53:36 2024   Multilayer Switch0   LAN-A1#configure terminal 
+Sat Mar 9 14:53:38 2024   Multilayer Switch0   LAN-A1(config)#vtp mode server
+Sat Mar 9 14:53:38 2024   Multilayer Switch0   LAN-A1(config)#vtp domain lana.com
+Sat Mar 9 14:53:38 2024   Multilayer Switch0   LAN-A1(config)#vtp password 1234
+Sat Mar 9 14:53:38 2024   Multilayer Switch0   LAN-A1(config)#end
+Sat Mar 9 14:53:38 2024   Multilayer Switch0   LAN-A1#wr
+Sat Mar 9 14:53:46 2024   Multilayer Switch1   LAN-A2#configure terminal 
+Sat Mar 9 14:53:47 2024   Multilayer Switch1   LAN-A2(config)#vtp mode server
+Sat Mar 9 14:53:47 2024   Multilayer Switch1   LAN-A2(config)#vtp domain lana.com
+Sat Mar 9 14:53:47 2024   Multilayer Switch1   LAN-A2(config)#vtp password 1234
+Sat Mar 9 14:53:47 2024   Multilayer Switch1   LAN-A2(config)#end
+Sat Mar 9 14:53:47 2024   Multilayer Switch1   LAN-A2#wr
+Sat Mar 9 14:55:45 2024   Multilayer Switch0   LAN-A1#configure terminal 
+Sat Mar 9 14:55:58 2024   Multilayer Switch0   LAN-A1(config)#interface range fastEthernet 0/1-4
+Sat Mar 9 14:56:01 2024   Multilayer Switch0   LAN-A1(config-if-range)#switchport trunk encapsulation dot1q 
+Sat Mar 9 14:56:03 2024   Multilayer Switch0   LAN-A1(config-if-range)#switchport mode trunk 
+Sat Mar 9 14:56:05 2024   Multilayer Switch0   LAN-A1(config-if-range)#end
+Sat Mar 9 14:56:06 2024   Multilayer Switch0   LAN-A1#write 
+Sat Mar 9 14:56:37 2024   Switch0   Switch>enable 
+Sat Mar 9 14:56:39 2024   Switch0   Switch#configure terminal 
+Sat Mar 9 14:56:42 2024   Switch0   Switch(config)#vtp mode server
+Sat Mar 9 14:56:42 2024   Switch0   Switch(config)#vtp domain lana.com
+Sat Mar 9 14:56:42 2024   Switch0   Switch(config)#vtp mode client
+Sat Mar 9 14:56:42 2024   Switch0   Switch(config)#exit
+Sat Mar 9 14:56:43 2024   Switch0   Switch#wr
+Sat Mar 9 14:56:59 2024   Switch0(1)   Switch>enable 
+Sat Mar 9 14:57:03 2024   Switch0(1)   Switch#show vtp status 
+Sat Mar 9 14:57:19 2024   Switch0(1)   Switch#configure terminal 
+Sat Mar 9 14:57:21 2024   Switch0(1)   Switch(config)#vtp mode server
+Sat Mar 9 14:57:21 2024   Switch0(1)   Switch(config)#vtp domain lanb.com
+Sat Mar 9 14:57:21 2024   Switch0(1)   Switch(config)#vtp mode client
+Sat Mar 9 14:57:21 2024   Switch0(1)   Switch(config)#exit
+Sat Mar 9 14:57:41 2024   Switch0(1)(1)   Switch>enable 
+Sat Mar 9 14:57:43 2024   Switch0(1)(1)   Switch#configure terminal 
+Sat Mar 9 14:57:45 2024   Switch0(1)(1)   Switch(config)#vtp mode server
+Sat Mar 9 14:57:45 2024   Switch0(1)(1)   Switch(config)#vtp domain lanc.com
+Sat Mar 9 14:57:45 2024   Switch0(1)(1)   Switch(config)#vtp mode client
+Sat Mar 9 14:57:45 2024   Switch0(1)(1)   Switch(config)#exit
+Sat Mar 9 14:59:33 2024   Multilayer Switch0(1)   LAN-A1>enable 
+Sat Mar 9 14:59:35 2024   Multilayer Switch0(1)   LAN-A1#configure terminal 
+Sat Mar 9 14:59:41 2024   Multilayer Switch0(1)   LAN-A1(config)#hostname LAN-B1
+Sat Mar 9 14:59:52 2024   Multilayer Switch0(1)   LAN-B1(config)#vtp domain lanb.com
+Sat Mar 9 14:59:54 2024   Multilayer Switch0(1)   LAN-B1(config)#do wr
+Sat Mar 9 15:00:10 2024   Multilayer Switch1(1)   LAN-A2>enable 
+Sat Mar 9 15:00:12 2024   Multilayer Switch1(1)   LAN-A2#configure terminal 
+Sat Mar 9 15:00:16 2024   Multilayer Switch1(1)   LAN-A2(config)#vtp domain lanb.com
+Sat Mar 9 15:00:24 2024   Multilayer Switch1(1)   LAN-A2(config)#hostname LAN-B2
+Sat Mar 9 15:00:27 2024   Multilayer Switch1(1)   LAN-B2(config)#do wr
+Sat Mar 9 15:00:28 2024   Multilayer Switch1(1)   LAN-B2(config)#end
+Sat Mar 9 15:01:54 2024   Multilayer Switch0(1)(1)   LAN-B1>enable 
+Sat Mar 9 15:01:56 2024   Multilayer Switch0(1)(1)   LAN-B1#configure terminal 
+Sat Mar 9 15:02:01 2024   Multilayer Switch0(1)(1)   LAN-B1(config)#hostname LAN-C1
+Sat Mar 9 15:02:10 2024   Multilayer Switch0(1)(1)   LAN-C1(config)#vtp domain lanc.com
+Sat Mar 9 15:02:12 2024   Multilayer Switch0(1)(1)   LAN-C1(config)#do wr
+Sat Mar 9 15:02:21 2024   Multilayer Switch1(1)(1)   LAN-B2>enable 
+Sat Mar 9 15:02:23 2024   Multilayer Switch1(1)(1)   LAN-B2#configure terminal 
+Sat Mar 9 15:02:28 2024   Multilayer Switch1(1)(1)   LAN-B2(config)#hostname LAN-C2
+Sat Mar 9 15:02:42 2024   Multilayer Switch1(1)(1)   LAN-C2(config)#vtp domain lanc.com
+Sat Mar 9 15:02:43 2024   Multilayer Switch1(1)(1)   LAN-C2(config)#end
+Sat Mar 9 15:02:44 2024   Multilayer Switch1(1)(1)   LAN-C2#write 
+Sat Mar 9 15:06:57 2024   Multilayer Switch0   LAN-A1>enable 
+Sat Mar 9 15:07:01 2024   Multilayer Switch0   LAN-A1#show etherchannel summary 
+Sat Mar 9 15:07:58 2024   Multilayer Switch0   LAN-A1#configure terminal 
+Sat Mar 9 15:08:01 2024   Multilayer Switch0   LAN-A1(config)#vlan 10
+Sat Mar 9 15:08:01 2024   Multilayer Switch0   LAN-A1(config-vlan)#name Admin
+Sat Mar 9 15:08:01 2024   Multilayer Switch0   LAN-A1(config-vlan)#vlan 20
+Sat Mar 9 15:08:02 2024   Multilayer Switch0   LAN-A1(config-vlan)#name IT
+Sat Mar 9 15:08:04 2024   Multilayer Switch0   LAN-A1(config-vlan)#end
+Sat Mar 9 15:08:04 2024   Multilayer Switch0   LAN-A1#write 
+Sat Mar 9 15:08:10 2024   Switch0(2)(1)   Switch>enable 
+Sat Mar 9 15:08:13 2024   Switch0(2)(1)   Switch#show vlan 
+Sat Mar 9 15:08:25 2024   Switch0(2)(1)   Switch#show vlan 
+Sat Mar 9 15:08:33 2024   Multilayer Switch1   LAN-A2>enable 
+Sat Mar 9 15:08:35 2024   Multilayer Switch1   LAN-A2#configure terminal 
+Sat Mar 9 15:08:39 2024   Multilayer Switch1   LAN-A2(config)#do sh vlan
+Sat Mar 9 15:08:48 2024   Switch0   Switch>enable 
+Sat Mar 9 15:08:51 2024   Switch0   Switch#show vtp status 
+Sat Mar 9 15:09:11 2024   Switch0   Switch#show vlan brief 
+Sat Mar 9 15:09:24 2024   Multilayer Switch0(1)   LAN-B1(config)#vlan 10
+Sat Mar 9 15:09:24 2024   Multilayer Switch0(1)   LAN-B1(config-vlan)#name Admin
+Sat Mar 9 15:09:24 2024   Multilayer Switch0(1)   LAN-B1(config-vlan)#vlan 20
+Sat Mar 9 15:09:25 2024   Multilayer Switch0(1)   LAN-B1(config-vlan)#name IT
+Sat Mar 9 15:09:27 2024   Multilayer Switch0(1)   LAN-B1(config-vlan)#do wr
+Sat Mar 9 15:09:28 2024   Multilayer Switch0(1)   LAN-B1(config-vlan)#exit 
+Sat Mar 9 15:09:34 2024   Multilayer Switch1(1)(1)   LAN-C2#configure terminal 
+Sat Mar 9 15:09:36 2024   Multilayer Switch1(1)(1)   LAN-C2(config)#vlan 10
+Sat Mar 9 15:09:36 2024   Multilayer Switch1(1)(1)   LAN-C2(config-vlan)#name Admin
+Sat Mar 9 15:09:36 2024   Multilayer Switch1(1)(1)   LAN-C2(config-vlan)#vlan 20
+Sat Mar 9 15:09:37 2024   Multilayer Switch1(1)(1)   LAN-C2(config-vlan)#name IT
+Sat Mar 9 15:09:38 2024   Multilayer Switch1(1)(1)   LAN-C2(config-vlan)#do wr
+Sat Mar 9 15:09:39 2024   Multilayer Switch1(1)(1)   LAN-C2(config-vlan)#es
+Sat Mar 9 15:09:42 2024   Multilayer Switch1(1)(1)   LAN-C2(config-vlan)#exit 
+Sat Mar 9 15:10:03 2024   Multilayer Switch1   LAN-A2(config)#vlan 30
+Sat Mar 9 15:10:03 2024   Multilayer Switch1   LAN-A2(config-vlan)#name Staff
+Sat Mar 9 15:10:03 2024   Multilayer Switch1   LAN-A2(config-vlan)#vlan 40
+Sat Mar 9 15:10:03 2024   Multilayer Switch1   LAN-A2(config-vlan)#name Student
+Sat Mar 9 15:10:03 2024   Multilayer Switch1   LAN-A2(config-vlan)#end
+Sat Mar 9 15:10:04 2024   Multilayer Switch1   LAN-A2#wr
+Sat Mar 9 15:10:11 2024   Multilayer Switch1(1)   LAN-B2#configure terminal 
+Sat Mar 9 15:10:13 2024   Multilayer Switch1(1)   LAN-B2(config)#vlan 30
+Sat Mar 9 15:10:13 2024   Multilayer Switch1(1)   LAN-B2(config-vlan)#name Staff
+Sat Mar 9 15:10:13 2024   Multilayer Switch1(1)   LAN-B2(config-vlan)#vlan 40
+Sat Mar 9 15:10:13 2024   Multilayer Switch1(1)   LAN-B2(config-vlan)#name Student
+Sat Mar 9 15:10:13 2024   Multilayer Switch1(1)   LAN-B2(config-vlan)#end
+Sat Mar 9 15:10:13 2024   Multilayer Switch1(1)   LAN-B2#wr
+Sat Mar 9 15:10:24 2024   Multilayer Switch0(1)(1)   LAN-C1(config)#vlan 30
+Sat Mar 9 15:10:24 2024   Multilayer Switch0(1)(1)   LAN-C1(config-vlan)#name Staff
+Sat Mar 9 15:10:24 2024   Multilayer Switch0(1)(1)   LAN-C1(config-vlan)#vlan 40
+Sat Mar 9 15:10:24 2024   Multilayer Switch0(1)(1)   LAN-C1(config-vlan)#name Student
+Sat Mar 9 15:10:24 2024   Multilayer Switch0(1)(1)   LAN-C1(config-vlan)#end
+Sat Mar 9 15:10:24 2024   Multilayer Switch0(1)(1)   LAN-C1#wr
+Sat Mar 9 15:11:23 2024   Switch0   Switch>enable 
+Sat Mar 9 15:11:25 2024   Switch0   Switch#configure terminal 
+Sat Mar 9 15:11:27 2024   Switch0   Switch(config)#hostname Admin
+Sat Mar 9 15:11:29 2024   Switch0   Admin(config)#end
+Sat Mar 9 15:11:30 2024   Switch0   Admin#wr
+Sat Mar 9 15:11:32 2024   Switch0   Admin#show vlan 
+Sat Mar 9 15:13:27 2024   Switch0   Admin#configure terminal 
+Sat Mar 9 15:13:28 2024   Switch0   Admin(config)#interface range fastEthernet 0/1-2
+Sat Mar 9 15:13:28 2024   Switch0   Admin(config-if-range)#switchport mode trunk
+Sat Mar 9 15:13:28 2024   Switch0   Admin(config-if-range)#end
+Sat Mar 9 15:13:28 2024   Switch0   Admin#write
+Sat Mar 9 15:13:34 2024   Switch0(2)   Switch>enable 
+Sat Mar 9 15:13:36 2024   Switch0(2)   Switch#configure terminal 
+Sat Mar 9 15:13:39 2024   Switch0(2)   Switch(config)#hostname IT
+Sat Mar 9 15:13:41 2024   Switch0(2)   IT(config)#interface range fastEthernet 0/1-2
+Sat Mar 9 15:13:41 2024   Switch0(2)   IT(config-if-range)#switchport mode trunk
+Sat Mar 9 15:13:41 2024   Switch0(2)   IT(config-if-range)#end
+Sat Mar 9 15:13:41 2024   Switch0(2)   IT#write
+Sat Mar 9 15:13:46 2024   Switch0(3)   Switch>enable 
+Sat Mar 9 15:13:47 2024   Switch0(3)   Switch#configure terminal 
+Sat Mar 9 15:13:50 2024   Switch0(3)   Switch(config)#hostname Staff
+Sat Mar 9 15:13:52 2024   Switch0(3)   Staff(config)#interface range fastEthernet 0/1-2
+Sat Mar 9 15:13:52 2024   Switch0(3)   Staff(config-if-range)#switchport mode trunk
+Sat Mar 9 15:13:52 2024   Switch0(3)   Staff(config-if-range)#end
+Sat Mar 9 15:13:52 2024   Switch0(3)   Staff#write
+Sat Mar 9 15:13:57 2024   Switch0(2)(1)   Switch>enable 
+Sat Mar 9 15:13:59 2024   Switch0(2)(1)   Switch#configure terminal 
+Sat Mar 9 15:14:06 2024   Switch0(2)(1)   Switch(config)#hostname Student
+Sat Mar 9 15:14:08 2024   Switch0(2)(1)   Student(config)#interface range fastEthernet 0/1-2
+Sat Mar 9 15:14:08 2024   Switch0(2)(1)   Student(config-if-range)#switchport mode trunk
+Sat Mar 9 15:14:08 2024   Switch0(2)(1)   Student(config-if-range)#end
+Sat Mar 9 15:14:08 2024   Switch0(2)(1)   Student#write
+Sat Mar 9 15:14:16 2024   Switch0   Admin#show vlan 
+Sat Mar 9 15:14:31 2024   Switch0   Admin#show vtp status 
+Sat Mar 9 15:14:51 2024   Switch0(1)   Switch>enable 
+Sat Mar 9 15:14:53 2024   Switch0(1)   Switch#configure terminal 
+Sat Mar 9 15:14:55 2024   Switch0(1)   Switch(config)#hostname Admin
+Sat Mar 9 15:14:57 2024   Switch0(1)   Admin(config)#interface range fastEthernet 0/1-2
+Sat Mar 9 15:14:57 2024   Switch0(1)   Admin(config-if-range)#switchport mode trunk
+Sat Mar 9 15:14:57 2024   Switch0(1)   Admin(config-if-range)#end
+Sat Mar 9 15:14:57 2024   Switch0(1)   Admin#write
+Sat Mar 9 15:15:00 2024   Switch0(1)   Admin#show vl
+Sat Mar 9 15:15:07 2024   Switch0(1)(2)   Switch>enable 
+Sat Mar 9 15:15:09 2024   Switch0(1)(2)   Switch#configure terminal 
+Sat Mar 9 15:15:12 2024   Switch0(1)(2)   Switch(config)#hostname IT
+Sat Mar 9 15:15:14 2024   Switch0(1)(2)   IT(config)#interface range fastEthernet 0/1-2
+Sat Mar 9 15:15:14 2024   Switch0(1)(2)   IT(config-if-range)#switchport mode trunk
+Sat Mar 9 15:15:14 2024   Switch0(1)(2)   IT(config-if-range)#end
+Sat Mar 9 15:15:14 2024   Switch0(1)(2)   IT#write
+Sat Mar 9 15:15:19 2024   Switch0(1)(3)   Switch>enable 
+Sat Mar 9 15:15:20 2024   Switch0(1)(3)   Switch#configure terminal 
+Sat Mar 9 15:15:26 2024   Switch0(1)(3)   Switch(config)#hostname Staff
+Sat Mar 9 15:15:28 2024   Switch0(1)(3)   Staff(config)#interface range fastEthernet 0/1-2
+Sat Mar 9 15:15:28 2024   Switch0(1)(3)   Staff(config-if-range)#switchport mode trunk
+Sat Mar 9 15:15:28 2024   Switch0(1)(3)   Staff(config-if-range)#end
+Sat Mar 9 15:15:28 2024   Switch0(1)(3)   Staff#write
+Sat Mar 9 15:15:33 2024   Switch0(1)(2)(1)   Switch>enable 
+Sat Mar 9 15:15:35 2024   Switch0(1)(2)(1)   Switch#configure terminal 
+Sat Mar 9 15:15:40 2024   Switch0(1)(2)(1)   Switch(config)#hostname Student
+Sat Mar 9 15:15:42 2024   Switch0(1)(2)(1)   Student(config)#interface range fastEthernet 0/1-2
+Sat Mar 9 15:15:42 2024   Switch0(1)(2)(1)   Student(config-if-range)#switchport mode trunk
+Sat Mar 9 15:15:42 2024   Switch0(1)(2)(1)   Student(config-if-range)#end
+Sat Mar 9 15:15:42 2024   Switch0(1)(2)(1)   Student#write
+Sat Mar 9 15:15:49 2024   Switch0(1)(1)(3)   Switch>enable 
+Sat Mar 9 15:15:51 2024   Switch0(1)(1)(3)   Switch#configure terminal 
+Sat Mar 9 15:16:08 2024   Switch0(1)(1)(3)   Switch(config)#host Management
+Sat Mar 9 15:16:10 2024   Switch0(1)(1)(3)   Management(config)#interface range fastEthernet 0/1-2
+Sat Mar 9 15:16:10 2024   Switch0(1)(1)(3)   Management(config-if-range)#switchport mode trunk
+Sat Mar 9 15:16:10 2024   Switch0(1)(1)(3)   Management(config-if-range)#end
+Sat Mar 9 15:16:10 2024   Switch0(1)(1)(3)   Management#write
+Sat Mar 9 15:16:14 2024   Switch0(1)(1)   Switch>enable 
+Sat Mar 9 15:16:16 2024   Switch0(1)(1)   Switch#configure terminal 
+Sat Mar 9 15:16:19 2024   Switch0(1)(1)   Switch(config)#hostname Admin
+Sat Mar 9 15:16:21 2024   Switch0(1)(1)   Admin(config)#interface range fastEthernet 0/1-2
+Sat Mar 9 15:16:21 2024   Switch0(1)(1)   Admin(config-if-range)#switchport mode trunk
+Sat Mar 9 15:16:21 2024   Switch0(1)(1)   Admin(config-if-range)#end
+Sat Mar 9 15:16:21 2024   Switch0(1)(1)   Admin#write
+Sat Mar 9 15:16:25 2024   Switch0(1)(1)(1)   Switch>enable 
+Sat Mar 9 15:16:27 2024   Switch0(1)(1)(1)   Switch#configure terminal 
+Sat Mar 9 15:16:31 2024   Switch0(1)(1)(1)   Switch(config)#hostname IT
+Sat Mar 9 15:16:33 2024   Switch0(1)(1)(1)   IT(config)#interface range fastEthernet 0/1-2
+Sat Mar 9 15:16:33 2024   Switch0(1)(1)(1)   IT(config-if-range)#switchport mode trunk
+Sat Mar 9 15:16:33 2024   Switch0(1)(1)(1)   IT(config-if-range)#end
+Sat Mar 9 15:16:33 2024   Switch0(1)(1)(1)   IT#write
+Sat Mar 9 15:16:37 2024   Switch0(1)(1)(2)   Switch>enable 
+Sat Mar 9 15:16:39 2024   Switch0(1)(1)(2)   Switch#configure terminal 
+Sat Mar 9 15:16:43 2024   Switch0(1)(1)(2)   Switch(config)#hostname Staff
+Sat Mar 9 15:16:45 2024   Switch0(1)(1)(2)   Staff(config)#interface range fastEthernet 0/1-2
+Sat Mar 9 15:16:45 2024   Switch0(1)(1)(2)   Staff(config-if-range)#switchport mode trunk
+Sat Mar 9 15:16:45 2024   Switch0(1)(1)(2)   Staff(config-if-range)#end
+Sat Mar 9 15:16:45 2024   Switch0(1)(1)(2)   Staff#write
+Sat Mar 9 15:16:49 2024   Switch0(1)(1)(1)(1)   Switch>enable 
+Sat Mar 9 15:16:50 2024   Switch0(1)(1)(1)(1)   Switch#configure terminal 
+Sat Mar 9 15:16:55 2024   Switch0(1)(1)(1)(1)   Switch(config)#hostname Student
+Sat Mar 9 15:16:57 2024   Switch0(1)(1)(1)(1)   Student(config)#interface range fastEthernet 0/1-2
+Sat Mar 9 15:16:57 2024   Switch0(1)(1)(1)(1)   Student(config-if-range)#switchport mode trunk
+Sat Mar 9 15:16:57 2024   Switch0(1)(1)(1)(1)   Student(config-if-range)#end
+Sat Mar 9 15:16:57 2024   Switch0(1)(1)(1)(1)   Student#write
+Sat Mar 9 15:19:35 2024   Switch0(2)   IT>enable 
+Sat Mar 9 15:19:37 2024   Switch0(2)   IT#show vlan 
+Sat Mar 9 15:19:44 2024   Switch0(1)(3)   Staff>enable 
+Sat Mar 9 15:19:46 2024   Switch0(1)(3)   Staff#show vlan 
+Sat Mar 9 15:21:07 2024   Switch0(1)(1)(2)   Staff>enable 
+Sat Mar 9 15:21:09 2024   Switch0(1)(1)(2)   Staff#show vlan 
+Sat Mar 9 15:26:36 2024   Multilayer Switch0   LAN-A1>enable 
+Sat Mar 9 15:26:38 2024   Multilayer Switch0   LAN-A1#configure terminal 
+Sat Mar 9 15:26:40 2024   Multilayer Switch0   LAN-A1(config)#ip dhcp pool Admin
+Sat Mar 9 15:26:40 2024   Multilayer Switch0   LAN-A1(dhcp-config)#network 172.16.0.0 255.255.254.0
+Sat Mar 9 15:26:40 2024   Multilayer Switch0   LAN-A1(dhcp-config)#default-router 172.16.4.127
+Sat Mar 9 15:26:40 2024   Multilayer Switch0   LAN-A1(dhcp-config)#dns-server 8.8.8.8
+Sat Mar 9 15:26:44 2024   Multilayer Switch0   LAN-A1(dhcp-config)#exit 
+Sat Mar 9 15:26:47 2024   Multilayer Switch0   LAN-A1(config)#do wr
+Sat Mar 9 15:26:54 2024   Multilayer Switch1   LAN-A2>enable 
+Sat Mar 9 15:26:56 2024   Multilayer Switch1   LAN-A2#configure terminal 
+Sat Mar 9 15:26:59 2024   Multilayer Switch1   LAN-A2(config)#ip dhcp pool Admin
+Sat Mar 9 15:26:59 2024   Multilayer Switch1   LAN-A2(dhcp-config)#network 172.16.0.0 255.255.254.0
+Sat Mar 9 15:26:59 2024   Multilayer Switch1   LAN-A2(dhcp-config)#default-router 172.16.4.127
+Sat Mar 9 15:26:59 2024   Multilayer Switch1   LAN-A2(dhcp-config)#dns-server 8.8.8.8
+Sat Mar 9 15:27:08 2024   Multilayer Switch1   LAN-A2(dhcp-config)#default-router 172.16.0.127
+Sat Mar 9 15:27:10 2024   Multilayer Switch1   LAN-A2(dhcp-config)#do wr
+Sat Mar 9 15:27:17 2024   Multilayer Switch0   LAN-A1(config)#default-router 172.16.0.127
+Sat Mar 9 15:27:25 2024   Multilayer Switch0   LAN-A1(config)#ip dhcp pool Admin
+Sat Mar 9 15:27:31 2024   Multilayer Switch0   LAN-A1(dhcp-config)#default-router 172.16.0.127
+Sat Mar 9 15:27:33 2024   Multilayer Switch0   LAN-A1(dhcp-config)#end
+Sat Mar 9 15:27:34 2024   Multilayer Switch0   LAN-A1#write 
+Sat Mar 9 15:27:39 2024   Multilayer Switch0   LAN-A1#configure 
+Sat Mar 9 15:28:20 2024   Multilayer Switch0   LAN-A1(config)#ip dhcp pool IT
+Sat Mar 9 15:28:20 2024   Multilayer Switch0   LAN-A1(dhcp-config)#network 172.16.0.128 255.255.254.0
+Sat Mar 9 15:28:20 2024   Multilayer Switch0   LAN-A1(dhcp-config)#dns-server 8.8.8.8
+Sat Mar 9 15:28:20 2024   Multilayer Switch0   LAN-A1(dhcp-config)#default-router 172.16.0.254
+Sat Mar 9 15:28:20 2024   Multilayer Switch0   LAN-A1(dhcp-config)#ip dhcp pool Staff
+Sat Mar 9 15:28:20 2024   Multilayer Switch0   LAN-A1(dhcp-config)#network 172.16.1.0 255.255.254.0
+Sat Mar 9 15:28:20 2024   Multilayer Switch0   LAN-A1(dhcp-config)#default-router 172.16.1.127
+Sat Mar 9 15:28:20 2024   Multilayer Switch0   LAN-A1(dhcp-config)#dns-server 8.8.8.8
+Sat Mar 9 15:28:20 2024   Multilayer Switch0   LAN-A1(dhcp-config)#ip dhcp pool Student
+Sat Mar 9 15:28:20 2024   Multilayer Switch0   LAN-A1(dhcp-config)#network 172.16.1.0 255.255.254.0
+Sat Mar 9 15:28:20 2024   Multilayer Switch0   LAN-A1(dhcp-config)#default-router 172.16.1.254
+Sat Mar 9 15:28:20 2024   Multilayer Switch0   LAN-A1(dhcp-config)#dns-server 8.8.8.8
+Sat Mar 9 15:28:20 2024   Multilayer Switch0   LAN-A1(dhcp-config)#end
+Sat Mar 9 15:28:20 2024   Multilayer Switch0   LAN-A1#wr
+Sat Mar 9 15:28:25 2024   Multilayer Switch0   LAN-A1#show running-config 
+Sat Mar 9 15:28:35 2024   Multilayer Switch1   LAN-A2(dhcp-config)#end
+Sat Mar 9 15:28:37 2024   Multilayer Switch1   LAN-A2#show vlan 
+Sat Mar 9 15:28:41 2024   Multilayer Switch1   LAN-A2#show running-config 
+Sat Mar 9 15:28:47 2024   Multilayer Switch1   LAN-A2#configure terminal 
+Sat Mar 9 15:28:49 2024   Multilayer Switch1   LAN-A2(config)#ip dhcp pool IT
+Sat Mar 9 15:28:49 2024   Multilayer Switch1   LAN-A2(dhcp-config)#network 172.16.0.128 255.255.254.0
+Sat Mar 9 15:28:49 2024   Multilayer Switch1   LAN-A2(dhcp-config)#dns-server 8.8.8.8
+Sat Mar 9 15:28:49 2024   Multilayer Switch1   LAN-A2(dhcp-config)#default-router 172.16.0.254
+Sat Mar 9 15:28:49 2024   Multilayer Switch1   LAN-A2(dhcp-config)#ip dhcp pool Staff
+Sat Mar 9 15:28:49 2024   Multilayer Switch1   LAN-A2(dhcp-config)#network 172.16.1.0 255.255.254.0
+Sat Mar 9 15:28:49 2024   Multilayer Switch1   LAN-A2(dhcp-config)#default-router 172.16.1.127
+Sat Mar 9 15:28:49 2024   Multilayer Switch1   LAN-A2(dhcp-config)#dns-server 8.8.8.8
+Sat Mar 9 15:28:49 2024   Multilayer Switch1   LAN-A2(dhcp-config)#ip dhcp pool Student
+Sat Mar 9 15:28:49 2024   Multilayer Switch1   LAN-A2(dhcp-config)#network 172.16.1.0 255.255.254.0
+Sat Mar 9 15:28:49 2024   Multilayer Switch1   LAN-A2(dhcp-config)#default-router 172.16.1.254
+Sat Mar 9 15:28:49 2024   Multilayer Switch1   LAN-A2(dhcp-config)#dns-server 8.8.8.8
+Sat Mar 9 15:28:49 2024   Multilayer Switch1   LAN-A2(dhcp-config)#end
+Sat Mar 9 15:28:49 2024   Multilayer Switch1   LAN-A2#wr
+Sat Mar 9 15:29:22 2024   Switch0   Admin>enable 
+Sat Mar 9 15:29:24 2024   Switch0   Admin#configure terminal 
+Sat Mar 9 15:29:26 2024   Switch0   Admin(config)#interface range fastEthernet 0/11-15
+Sat Mar 9 15:29:27 2024   Switch0   Admin(config-if-range)#switchport mode access
+Sat Mar 9 15:29:29 2024   Switch0   Admin(config-if-range)#switchport access vlan 10
+Sat Mar 9 15:29:31 2024   Switch0   Admin(config-if-range)#do wr
+Sat Mar 9 15:29:32 2024   Switch0   Admin(config-if-range)#exit 
+Sat Mar 9 15:29:39 2024   Switch0(2)   IT#configure terminal 
+Sat Mar 9 15:29:41 2024   Switch0(2)   IT(config)#interface range fastEthernet 0/11-15
+Sat Mar 9 15:29:41 2024   Switch0(2)   IT(config-if-range)#switchport mode access
+Sat Mar 9 15:29:43 2024   Switch0(2)   IT(config-if-range)#switchport access vlan 20
+Sat Mar 9 15:29:45 2024   Switch0(2)   IT(config-if-range)#do wr
+Sat Mar 9 15:29:46 2024   Switch0(2)   IT(config-if-range)#exit 
+Sat Mar 9 15:29:51 2024   Switch0(3)   Staff>enable 
+Sat Mar 9 15:29:53 2024   Switch0(3)   Staff#configure terminal 
+Sat Mar 9 15:29:55 2024   Switch0(3)   Staff(config)#interface range fastEthernet 0/11-15
+Sat Mar 9 15:29:55 2024   Switch0(3)   Staff(config-if-range)#switchport mode access
+Sat Mar 9 15:29:57 2024   Switch0(3)   Staff(config-if-range)#switchport access vlan 30
+Sat Mar 9 15:29:59 2024   Switch0(3)   Staff(config-if-range)#do wr
+Sat Mar 9 15:30:00 2024   Switch0(3)   Staff(config-if-range)#exit 
+Sat Mar 9 15:30:06 2024   Switch0(2)(1)   Student>enm
+Sat Mar 9 15:30:11 2024   Switch0(2)(1)   Student>enable 
+Sat Mar 9 15:30:14 2024   Switch0(2)(1)   Student#configure terminal 
+Sat Mar 9 15:30:16 2024   Switch0(2)(1)   Student(config)#interface range fastEthernet 0/11-15
+Sat Mar 9 15:30:16 2024   Switch0(2)(1)   Student(config-if-range)#switchport mode access
+Sat Mar 9 15:30:19 2024   Switch0(2)(1)   Student(config-if-range)#switchport access vlan 40
+Sat Mar 9 15:30:21 2024   Switch0(2)(1)   Student(config-if-range)#do wr
+Sat Mar 9 15:30:23 2024   Switch0(2)(1)   Student(config-if-range)#exit 
+Sat Mar 9 15:31:13 2024   Multilayer Switch0   LAN-A1#configure terminal 
+Sat Mar 9 15:31:31 2024   Multilayer Switch0   LAN-A1(config)#spanning-tree vlan 10,20 root primary 
+Sat Mar 9 15:31:41 2024   Multilayer Switch0   LAN-A1(config)#do wr
+Sat Mar 9 15:31:47 2024   Multilayer Switch0(1)   LAN-B1>enable 
+Sat Mar 9 15:31:49 2024   Multilayer Switch0(1)   LAN-B1#configure terminal 
+Sat Mar 9 15:31:51 2024   Multilayer Switch0(1)   LAN-B1(config)#spanning-tree vlan 10,20 root primary 
+Sat Mar 9 15:31:53 2024   Multilayer Switch0(1)   LAN-B1(config)#do wr
+Sat Mar 9 15:31:59 2024   Multilayer Switch0(1)(1)   LAN-C1>enable 
+Sat Mar 9 15:32:01 2024   Multilayer Switch0(1)(1)   LAN-C1#configure terminal 
+Sat Mar 9 15:32:03 2024   Multilayer Switch0(1)(1)   LAN-C1(config)#spanning-tree vlan 10,20 root primary 
+Sat Mar 9 15:32:05 2024   Multilayer Switch0(1)(1)   LAN-C1(config)#do wr
+Sat Mar 9 15:32:11 2024   Multilayer Switch1   LAN-A2#configure terminal 
+Sat Mar 9 15:32:22 2024   Multilayer Switch1   LAN-A2(config)#spanning-tree vlan 30,40 root primary 
+Sat Mar 9 15:32:27 2024   Multilayer Switch1   LAN-A2(config)#do wr
+Sat Mar 9 15:32:35 2024   Multilayer Switch1(1)   LAN-B2>enable 7
+Sat Mar 9 15:32:37 2024   Multilayer Switch1(1)   LAN-B2>enable 
+Sat Mar 9 15:32:40 2024   Multilayer Switch1(1)   LAN-B2#configure terminal 
+Sat Mar 9 15:32:43 2024   Multilayer Switch1(1)   LAN-B2(config)#spanning-tree vlan 30,40 root primary
+Sat Mar 9 15:32:45 2024   Multilayer Switch1(1)   LAN-B2(config)#do wr
+Sat Mar 9 15:32:52 2024   Multilayer Switch1(1)(1)   LAN-C2>enable 
+Sat Mar 9 15:32:54 2024   Multilayer Switch1(1)(1)   LAN-C2#configure terminal 
+Sat Mar 9 15:33:04 2024   Multilayer Switch1(1)(1)   LAN-C2(config)#spanning-tree vlan 30,40,50 root primary
+Sat Mar 9 15:33:06 2024   Multilayer Switch1(1)(1)   LAN-C2(config)#do wr
+Sat Mar 9 15:33:09 2024   Multilayer Switch1(1)(1)   LAN-C2(config)#vlan 50
+Sat Mar 9 15:33:14 2024   Multilayer Switch1(1)(1)   LAN-C2(config-vlan)#name Management
+Sat Mar 9 15:33:15 2024   Multilayer Switch1(1)(1)   LAN-C2(config-vlan)#do wr
+Sat Mar 9 15:33:16 2024   Multilayer Switch1(1)(1)   LAN-C2(config-vlan)#exit 
+Sat Mar 9 15:33:38 2024   Multilayer Switch0   LAN-A1(config)#interface vlan 10
+Sat Mar 9 15:34:22 2024   Multilayer Switch0   LAN-A1(config-if)#ip address 172.16.1.1 255.255.254.0
+Sat Mar 9 15:34:24 2024   Multilayer Switch0   LAN-A1(config-if)#no shutdown 
+Sat Mar 9 15:34:28 2024   Multilayer Switch0   LAN-A1(config-if)#interface vlan 20
+Sat Mar 9 15:34:37 2024   Multilayer Switch0   LAN-A1(config-if)#ip address 172.16.1.129 255.255.254.0
+Sat Mar 9 15:35:07 2024   Multilayer Switch0   LAN-A1(config-if)#interface vlan 10
+Sat Mar 9 15:35:15 2024   Multilayer Switch0   LAN-A1(config-if)#ip address 172.16.0.1 255.255.254.0
+Sat Mar 9 15:35:22 2024   Multilayer Switch0   LAN-A1(config-if)#ip address 172.16.0.129 255.255.254.0
+Sat Mar 9 15:35:27 2024   Multilayer Switch0   LAN-A1(config-if)#ip address 172.16.0.1 255.255.254.0
+Sat Mar 9 15:35:30 2024   Multilayer Switch0   LAN-A1(config-if)#interface vlan 20
+Sat Mar 9 15:35:33 2024   Multilayer Switch0   LAN-A1(config-if)#ip address 172.16.0.129 255.255.254.0
+Sat Mar 9 15:46:07 2024   Multilayer Switch0   LAN-A1(config-if)#exit 
+Sat Mar 9 15:46:41 2024   Multilayer Switch0   LAN-A1(config)#ip dhcp pool Admin
+Sat Mar 9 15:46:41 2024   Multilayer Switch0   LAN-A1(dhcp-config)#network 172.16.0.0 255.255.255.128
+Sat Mar 9 15:46:41 2024   Multilayer Switch0   LAN-A1(dhcp-config)#default-router 172.16.0.127
+Sat Mar 9 15:46:41 2024   Multilayer Switch0   LAN-A1(dhcp-config)#dns-server 8.8.8.8
+Sat Mar 9 15:46:41 2024   Multilayer Switch0   LAN-A1(dhcp-config)#ip dhcp pool IT
+Sat Mar 9 15:46:41 2024   Multilayer Switch0   LAN-A1(dhcp-config)#network 172.16.0.128 255.255.255.128
+Sat Mar 9 15:46:41 2024   Multilayer Switch0   LAN-A1(dhcp-config)#dns-server 8.8.8.8
+Sat Mar 9 15:46:41 2024   Multilayer Switch0   LAN-A1(dhcp-config)#default-router 172.16.0.254
+Sat Mar 9 15:46:41 2024   Multilayer Switch0   LAN-A1(dhcp-config)#ip dhcp pool Staff
+Sat Mar 9 15:46:41 2024   Multilayer Switch0   LAN-A1(dhcp-config)#network 172.16.1.0 255.255.255.128
+Sat Mar 9 15:46:41 2024   Multilayer Switch0   LAN-A1(dhcp-config)#default-router 172.16.1.127
+Sat Mar 9 15:46:41 2024   Multilayer Switch0   LAN-A1(dhcp-config)#dns-server 8.8.8.8
+Sat Mar 9 15:46:41 2024   Multilayer Switch0   LAN-A1(dhcp-config)#ip dhcp pool Student
+Sat Mar 9 15:46:41 2024   Multilayer Switch0   LAN-A1(dhcp-config)#network 172.16.1.0 255.255.255.128
+Sat Mar 9 15:46:41 2024   Multilayer Switch0   LAN-A1(dhcp-config)#default-router 172.16.1.254
+Sat Mar 9 15:46:41 2024   Multilayer Switch0   LAN-A1(dhcp-config)#dns-server 8.8.8.8
+Sat Mar 9 15:46:41 2024   Multilayer Switch0   LAN-A1(dhcp-config)#end
+Sat Mar 9 15:46:41 2024   Multilayer Switch0   LAN-A1#wr
+Sat Mar 9 15:46:46 2024   Multilayer Switch0   LAN-A1#configure terminal 
+Sat Mar 9 15:46:52 2024   Multilayer Switch1   LAN-A2(config)#ip dhcp pool Admin
+Sat Mar 9 15:46:52 2024   Multilayer Switch1   LAN-A2(dhcp-config)#network 172.16.0.0 255.255.255.128
+Sat Mar 9 15:46:52 2024   Multilayer Switch1   LAN-A2(dhcp-config)#default-router 172.16.0.127
+Sat Mar 9 15:46:52 2024   Multilayer Switch1   LAN-A2(dhcp-config)#dns-server 8.8.8.8
+Sat Mar 9 15:46:52 2024   Multilayer Switch1   LAN-A2(dhcp-config)#ip dhcp pool IT
+Sat Mar 9 15:46:52 2024   Multilayer Switch1   LAN-A2(dhcp-config)#network 172.16.0.128 255.255.255.128
+Sat Mar 9 15:46:52 2024   Multilayer Switch1   LAN-A2(dhcp-config)#dns-server 8.8.8.8
+Sat Mar 9 15:46:52 2024   Multilayer Switch1   LAN-A2(dhcp-config)#default-router 172.16.0.254
+Sat Mar 9 15:46:52 2024   Multilayer Switch1   LAN-A2(dhcp-config)#ip dhcp pool Staff
+Sat Mar 9 15:46:52 2024   Multilayer Switch1   LAN-A2(dhcp-config)#network 172.16.1.0 255.255.255.128
+Sat Mar 9 15:46:52 2024   Multilayer Switch1   LAN-A2(dhcp-config)#default-router 172.16.1.127
+Sat Mar 9 15:46:52 2024   Multilayer Switch1   LAN-A2(dhcp-config)#dns-server 8.8.8.8
+Sat Mar 9 15:46:52 2024   Multilayer Switch1   LAN-A2(dhcp-config)#ip dhcp pool Student
+Sat Mar 9 15:46:52 2024   Multilayer Switch1   LAN-A2(dhcp-config)#network 172.16.1.0 255.255.255.128
+Sat Mar 9 15:46:52 2024   Multilayer Switch1   LAN-A2(dhcp-config)#default-router 172.16.1.254
+Sat Mar 9 15:46:52 2024   Multilayer Switch1   LAN-A2(dhcp-config)#dns-server 8.8.8.8
+Sat Mar 9 15:46:52 2024   Multilayer Switch1   LAN-A2(dhcp-config)#end
+Sat Mar 9 15:46:52 2024   Multilayer Switch1   LAN-A2#wr
+Sat Mar 9 15:47:17 2024   Multilayer Switch0   LAN-A1(config)#do sh run
+Sat Mar 9 15:47:37 2024   Multilayer Switch0   LAN-A1(config)#interface vlan 20
+Sat Mar 9 15:47:53 2024   Multilayer Switch0   LAN-A1(config-if)#ip address 172.16.0.129 255.255.255.128
+Sat Mar 9 15:47:56 2024   Multilayer Switch0   LAN-A1(config-if)#interface vlan 10
+Sat Mar 9 15:48:03 2024   Multilayer Switch0   LAN-A1(config-if)#ip address 172.16.0.1 255.255.255.128
+Sat Mar 9 15:48:05 2024   Multilayer Switch0   LAN-A1(config-if)#no shutdown 
+Sat Mar 9 15:48:08 2024   Multilayer Switch0   LAN-A1(config-if)#interface vlan 20
+Sat Mar 9 15:48:13 2024   Multilayer Switch0   LAN-A1(config-if)#ip address 172.16.0.129 255.255.255.128
+Sat Mar 9 15:48:15 2024   Multilayer Switch0   LAN-A1(config-if)#no shutdown 
+Sat Mar 9 15:48:18 2024   Multilayer Switch0   LAN-A1(config-if)#interface vlan 30
+Sat Mar 9 15:48:26 2024   Multilayer Switch0   LAN-A1(config-if)#ip address 172.16.1.2 255.255.255.128
+Sat Mar 9 15:48:34 2024   Multilayer Switch0   LAN-A1(config-if)#no sh
+Sat Mar 9 15:48:36 2024   Multilayer Switch0   LAN-A1(config-if)#interface vlan 40
+Sat Mar 9 15:48:44 2024   Multilayer Switch0   LAN-A1(config-if)#ip address 172.16.1.130 255.255.255.128
+Sat Mar 9 15:48:49 2024   Multilayer Switch0   LAN-A1(config-if)#do wr
+Sat Mar 9 15:48:50 2024   Multilayer Switch0   LAN-A1(config-if)#end
+Sat Mar 9 15:50:15 2024   Multilayer Switch1   LAN-A2#configure terminal 
+Sat Mar 9 15:50:19 2024   Multilayer Switch1   LAN-A2(config)#interface vlan 10
+Sat Mar 9 15:50:27 2024   Multilayer Switch1   LAN-A2(config-if)#ip address 172.16.0.2 255.255.255.128
+Sat Mar 9 15:50:28 2024   Multilayer Switch1   LAN-A2(config-if)#no shutdown 
+Sat Mar 9 15:50:31 2024   Multilayer Switch1   LAN-A2(config-if)#interface vlan 20
+Sat Mar 9 15:50:43 2024   Multilayer Switch1   LAN-A2(config-if)#ip address 172.16.0.130 255.255.255.128
+Sat Mar 9 15:50:45 2024   Multilayer Switch1   LAN-A2(config-if)#no shutdown 
+Sat Mar 9 15:50:48 2024   Multilayer Switch1   LAN-A2(config-if)#interface vlan 30
+Sat Mar 9 15:51:01 2024   Multilayer Switch1   LAN-A2(config-if)#ip address 172.16.1.1 255.255.255.128
+Sat Mar 9 15:51:04 2024   Multilayer Switch1   LAN-A2(config-if)#no shutdown 
+Sat Mar 9 15:51:23 2024   Multilayer Switch1   LAN-A2(config-if)#ip address 172.16.0.130 255.255.255.128
+Sat Mar 9 15:52:20 2024   Multilayer Switch0   LAN-A1#configure terminal 
+Sat Mar 9 15:52:27 2024   Multilayer Switch0   LAN-A1(config)#interface vlan 30
+Sat Mar 9 15:52:29 2024   Multilayer Switch0   LAN-A1(config-if)#shutdown 
+Sat Mar 9 15:52:46 2024   Multilayer Switch0   LAN-A1(config-if)#interface vlan 30
+Sat Mar 9 15:52:50 2024   Multilayer Switch0   LAN-A1(config-if)#exit 
+Sat Mar 9 15:52:54 2024   Multilayer Switch0   LAN-A1(config)#interface vlan 10
+Sat Mar 9 15:53:00 2024   Multilayer Switch0   LAN-A1(config-if)#standby 1 priority 150
+Sat Mar 9 15:53:05 2024   Multilayer Switch0   LAN-A1(config-if)#standby 1 preempt 
+Sat Mar 9 15:53:29 2024   Multilayer Switch0   LAN-A1(config-if)#standby 1 ip 172.16.0.127
+Sat Mar 9 15:53:34 2024   Multilayer Switch0   LAN-A1(config-if)#interface vlan 20
+Sat Mar 9 15:53:44 2024   Multilayer Switch0   LAN-A1(config-if)#standby 1 ip 172.16.0.254
+Sat Mar 9 15:53:47 2024   Multilayer Switch0   LAN-A1(config-if)#standby 1 preempt 
+Sat Mar 9 15:53:50 2024   Multilayer Switch0   LAN-A1(config-if)#standby 1 priority 150
+Sat Mar 9 15:53:53 2024   Multilayer Switch0   LAN-A1(config-if)#interface vlan 30
+Sat Mar 9 15:53:55 2024   Multilayer Switch0   LAN-A1(config-if)#standby 1 preempt 
+Sat Mar 9 15:54:00 2024   Multilayer Switch0   LAN-A1(config-if)#standby 1 priority 100
+Sat Mar 9 15:54:07 2024   Multilayer Switch0   LAN-A1(config-if)#standby 1 ip 172.16.1.127
+Sat Mar 9 15:54:14 2024   Multilayer Switch0   LAN-A1(config-if)#interface vlan 40
+Sat Mar 9 15:54:16 2024   Multilayer Switch0   LAN-A1(config-if)#standby 1 priority 100
+Sat Mar 9 15:54:20 2024   Multilayer Switch0   LAN-A1(config-if)#standby 1 ip 172.16.1.254
+Sat Mar 9 15:54:25 2024   Multilayer Switch0   LAN-A1(config-if)#standby 1 preempt 
+Sat Mar 9 15:54:26 2024   Multilayer Switch0   LAN-A1(config-if)#end
+Sat Mar 9 15:54:27 2024   Multilayer Switch0   LAN-A1#write 
+Sat Mar 9 15:54:37 2024   Multilayer Switch1   LAN-A2(config-if)#conf
+Sat Mar 9 15:54:38 2024   Multilayer Switch1   LAN-A2(config-if)#exit 
+Sat Mar 9 15:54:44 2024   Multilayer Switch1   LAN-A2(config)#interface vlan 10
+Sat Mar 9 15:54:54 2024   Multilayer Switch1   LAN-A2(config-if)#standby 1 priority 100
+Sat Mar 9 15:55:03 2024   Multilayer Switch1   LAN-A2(config-if)#standby 1 preempt 
+Sat Mar 9 15:55:24 2024   Multilayer Switch1   LAN-A2(config-if)#standby 1 ip 172.16.0.127
+Sat Mar 9 15:55:45 2024   Multilayer Switch1   LAN-A2(config-if)#exit 
+Sat Mar 9 15:55:49 2024   Multilayer Switch1   LAN-A2(config)#interface vlan 20
+Sat Mar 9 15:56:00 2024   Multilayer Switch1   LAN-A2(config-if)#standby 1 priority 100
+Sat Mar 9 15:56:05 2024   Multilayer Switch1   LAN-A2(config-if)#standby 1 preempt 
+Sat Mar 9 15:56:13 2024   Multilayer Switch1   LAN-A2(config-if)#standby 1 ip 172.16.0.254
+Sat Mar 9 15:56:28 2024   Multilayer Switch1   LAN-A2(config-if)#standby 1 preempt 
+Sat Mar 9 15:56:40 2024   Multilayer Switch1   LAN-A2(config-if)#int vlan 30
+Sat Mar 9 15:56:48 2024   Multilayer Switch1   LAN-A2(config-if)#standby 1 priority 150
+Sat Mar 9 15:58:43 2024   Multilayer Switch0   LAN-A1#configure terminal 
+Sat Mar 9 15:58:45 2024   Multilayer Switch0   LAN-A1(config)#ip dhcp excluded-address 172.16.0.1 172.16.0.3
+Sat Mar 9 15:58:45 2024   Multilayer Switch0   LAN-A1(config)#ip dhcp excluded-address 172.16.0.129 172.16.0.131
+Sat Mar 9 15:58:45 2024   Multilayer Switch0   LAN-A1(config)#ip dhcp excluded-address 172.16.1.1 172.16.1.3
+Sat Mar 9 15:58:45 2024   Multilayer Switch0   LAN-A1(config)#ip dhcp excluded-address 172.16.1.129 172.16.1.131
+Sat Mar 9 15:58:49 2024   Multilayer Switch0   LAN-A1(config)#do wr
+Sat Mar 9 15:58:56 2024   Multilayer Switch1   LAN-A2(config-if)#exit 
+Sat Mar 9 15:59:01 2024   Multilayer Switch1   LAN-A2(config)#ip dhcp excluded-address 172.16.0.1 172.16.0.3
+Sat Mar 9 15:59:01 2024   Multilayer Switch1   LAN-A2(config)#ip dhcp excluded-address 172.16.0.129 172.16.0.131
+Sat Mar 9 15:59:01 2024   Multilayer Switch1   LAN-A2(config)#ip dhcp excluded-address 172.16.1.1 172.16.1.3
+Sat Mar 9 15:59:01 2024   Multilayer Switch1   LAN-A2(config)#ip dhcp excluded-address 172.16.1.129 172.16.1.131
+Sat Mar 9 15:59:21 2024   Multilayer Switch0   LAN-A1(config)#do sh ip int br
+Sat Mar 9 15:59:37 2024   Multilayer Switch0   LAN-A1(config)#interface vlan 
+Sat Mar 9 15:59:41 2024   Multilayer Switch0   LAN-A1(config)#interface vlan 30
+Sat Mar 9 15:59:54 2024   Multilayer Switch0   LAN-A1(config-if)#ip 172.16.1.2 255.255.255.128
+Sat Mar 9 16:00:02 2024   Multilayer Switch0   LAN-A1(config-if)#ip ad 172.16.1.2 255.255.255.128
+Sat Mar 9 16:00:05 2024   Multilayer Switch0   LAN-A1(config-if)#no shutdown 
+Sat Mar 9 16:00:18 2024   Multilayer Switch1   LAN-A2(config)#end
+Sat Mar 9 16:00:25 2024   Multilayer Switch1   LAN-A2#show ip interface brief 
+Sat Mar 9 16:01:14 2024   Multilayer Switch0(2)   LAN-A1>enable 
+Sat Mar 9 16:01:16 2024   Multilayer Switch0(2)   LAN-A1#configure terminal 
+Sat Mar 9 16:01:25 2024   Multilayer Switch0(2)   LAN-A1(config)#interface range fastEthernet 0/21-24
+Sat Mar 9 16:01:35 2024   Multilayer Switch0(2)   LAN-A1(config-if-range)#channel-group 1 mode passive 
+Sat Mar 9 16:01:37 2024   Multilayer Switch0(2)   LAN-A1(config-if-range)#exit 
+Sat Mar 9 16:01:48 2024   Multilayer Switch0(2)   LAN-A1(config)#end
+Sat Mar 9 16:01:51 2024   Multilayer Switch0(2)   LAN-A1#show running-config 
+Sat Mar 9 16:02:13 2024   Multilayer Switch0(2)   LAN-A1#show  ip interface brief 
+Sat Mar 9 16:02:24 2024   Multilayer Switch0(2)   LAN-A1#configure terminal 
+Sat Mar 9 16:02:29 2024   Multilayer Switch0(2)   LAN-A1(config)#interface vlan 10
+Sat Mar 9 16:02:37 2024   Multilayer Switch0(2)   LAN-A1(config-if)#ip address 172.16.0.2 255.255.255.128
+Sat Mar 9 16:02:40 2024   Multilayer Switch0(2)   LAN-A1(config-if)#interface vlan 20
+Sat Mar 9 16:02:49 2024   Multilayer Switch0(2)   LAN-A1(config-if)#ip address 172.16.0.130 255.255.255.128
+Sat Mar 9 16:02:53 2024   Multilayer Switch0(2)   LAN-A1(config-if)#interface vlan 30
+Sat Mar 9 16:03:00 2024   Multilayer Switch0(2)   LAN-A1(config-if)#ip address 172.16.1.127 255.255.255.128
+Sat Mar 9 16:03:27 2024   Multilayer Switch0(2)   LAN-A1(config-if)#ip address 172.16.1.129 255.255.255.128
+Sat Mar 9 16:03:41 2024   Multilayer Switch0(2)   LAN-A1(config-if)#ip address 172.16.1.2 255.255.255.128
+Sat Mar 9 16:03:46 2024   Multilayer Switch0(2)   LAN-A1(config-if)#interface vlan 40
+Sat Mar 9 16:03:48 2024   Multilayer Switch0(2)   LAN-A1(config-if)#ip address 172.16.1.129 255.255.255.128
+Sat Mar 9 16:03:52 2024   Multilayer Switch0(2)   LAN-A1(config-if)#do wr
+Sat Mar 9 16:03:53 2024   Multilayer Switch0(2)   LAN-A1(config-if)#exit 
+Sat Mar 9 16:03:54 2024   Multilayer Switch0(2)   LAN-A1(config)#exit 
+Sat Mar 9 16:03:58 2024   Multilayer Switch0(2)   LAN-A1#show ip interface brief 
+Sat Mar 9 16:04:09 2024   Multilayer Switch0(2)   LAN-A1#configure terminal 4
+Sat Mar 9 16:04:11 2024   Multilayer Switch0(2)   LAN-A1#configure terminal 
+Sat Mar 9 16:04:15 2024   Multilayer Switch0(2)   LAN-A1(config)#interface vlan 30
+Sat Mar 9 16:04:18 2024   Multilayer Switch0(2)   LAN-A1(config-if)#ip address 172.16.1.1 255.255.255.128
+Sat Mar 9 16:04:20 2024   Multilayer Switch0(2)   LAN-A1(config-if)#no shutdown 
+Sat Mar 9 16:04:21 2024   Multilayer Switch0(2)   LAN-A1(config-if)#exit 
+Sat Mar 9 16:04:35 2024   Multilayer Switch0(2)   LAN-A1(config)#no spanning-tree vlan 10,20 root p
+Sat Mar 9 16:04:43 2024   Multilayer Switch0(2)   LAN-A1(config)#no spanning-tree vlan 10,20 root ?
+Sat Mar 9 16:04:44 2024   Multilayer Switch0(2)   LAN-A1(config)#no spanning-tree vlan 10,20 root 
+Sat Mar 9 16:04:58 2024   Multilayer Switch0(2)   LAN-A1(config)#spanning-tree vlan 30,40 root primary 
+Sat Mar 9 16:05:00 2024   Multilayer Switch0(2)   LAN-A1(config)#do wr
+Sat Mar 9 16:05:07 2024   Multilayer Switch0(2)   LAN-A1(config)#hostname LAN-A2
+Sat Mar 9 16:05:09 2024   Multilayer Switch0(2)   LAN-A2(config)#do wr
+Sat Mar 9 16:06:00 2024   Multilayer Switch0(2)   LAN-A2(config)#end
+Sat Mar 9 16:06:05 2024   Multilayer Switch0(2)   LAN-A2#show standby brief 
+Sat Mar 9 16:07:03 2024   Multilayer Switch0(2)   LAN-A2#show vlan 
+Sat Mar 9 16:07:12 2024   Multilayer Switch0(2)   LAN-A2#show ip interface brief 
+Sat Mar 9 16:07:26 2024   Multilayer Switch0(2)   LAN-A2#show running-config 
+Sat Mar 9 16:08:19 2024   Multilayer Switch0(2)   LAN-A2#configure terminal 
+Sat Mar 9 16:08:22 2024   Multilayer Switch0(2)   LAN-A2(config)#interface vlan 10
+Sat Mar 9 16:08:27 2024   Multilayer Switch0(2)   LAN-A2(config-if)#standby 1 priority 100
+Sat Mar 9 16:08:31 2024   Multilayer Switch0(2)   LAN-A2(config-if)#interface vlan 20
+Sat Mar 9 16:08:32 2024   Multilayer Switch0(2)   LAN-A2(config-if)#standby 1 priority 100
+Sat Mar 9 16:08:35 2024   Multilayer Switch0(2)   LAN-A2(config-if)#interface vlan 30
+Sat Mar 9 16:08:37 2024   Multilayer Switch0(2)   LAN-A2(config-if)#standby 1 priority 150
+Sat Mar 9 16:08:42 2024   Multilayer Switch0(2)   LAN-A2(config-if)#interface vlan 40
+Sat Mar 9 16:08:43 2024   Multilayer Switch0(2)   LAN-A2(config-if)#interface vlan 40
+Sat Mar 9 16:08:46 2024   Multilayer Switch0(2)   LAN-A2(config-if)#standby 1 priority 150
+Sat Mar 9 16:08:47 2024   Multilayer Switch0(2)   LAN-A2(config-if)#end
+Sat Mar 9 16:08:48 2024   Multilayer Switch0(2)   LAN-A2#write 
+Sat Mar 9 16:08:53 2024   Multilayer Switch0(2)   LAN-A2#show standby brief 
+Sat Mar 9 16:16:23 2024   Switch0(3)   Staff>enable 
+Sat Mar 9 16:16:25 2024   Switch0(3)   Staff#show vlan 
+Sat Mar 9 16:16:44 2024   Switch0(2)(1)   Student>enable 
+Sat Mar 9 16:16:46 2024   Switch0(2)(1)   Student#show vlan  brief 
+Sat Mar 9 16:18:27 2024   Multilayer Switch0(2)   LAN-A2>enable 
+Sat Mar 9 16:18:31 2024   Multilayer Switch0(2)   LAN-A2#show vlan `
+Sat Mar 9 16:18:32 2024   Multilayer Switch0(2)   LAN-A2#show vlan 
+Sat Mar 9 16:18:42 2024   Multilayer Switch0(2)   LAN-A2#show running-config 
+Sat Mar 9 16:19:08 2024   Multilayer Switch0(2)   LAN-A2#configure terminal 
+Sat Mar 9 16:19:10 2024   Multilayer Switch0(2)   LAN-A2(config)#ip dhcp pool Student
+Sat Mar 9 16:19:15 2024   Multilayer Switch0(2)   LAN-A2(dhcp-config)#network 172.16.1.128 255.255.255.128
+Sat Mar 9 16:19:17 2024   Multilayer Switch0(2)   LAN-A2(dhcp-config)#end
+Sat Mar 9 16:19:18 2024   Multilayer Switch0(2)   LAN-A2#write 
+Sat Mar 9 16:19:20 2024   Multilayer Switch0(2)   LAN-A2#show running-config 
+Sat Mar 9 16:21:34 2024   Multilayer Switch0(1)   LAN-B1>enable 
+Sat Mar 9 16:21:36 2024   Multilayer Switch0(1)   LAN-B1#show running-config 
+Sat Mar 9 16:21:41 2024   Multilayer Switch0(1)   LAN-B1#configure terminal 
+Sat Mar 9 16:21:43 2024   Multilayer Switch0(1)   LAN-B1(config)#ip dhcp pool Admin
+Sat Mar 9 16:21:43 2024   Multilayer Switch0(1)   LAN-B1(dhcp-config)#network 172.16.2.0 255.255.255.128
+Sat Mar 9 16:21:43 2024   Multilayer Switch0(1)   LAN-B1(dhcp-config)#default-router 172.16.2.127
+Sat Mar 9 16:21:43 2024   Multilayer Switch0(1)   LAN-B1(dhcp-config)#dns-server 8.8.8.8
+Sat Mar 9 16:21:43 2024   Multilayer Switch0(1)   LAN-B1(dhcp-config)#ip dhcp pool IT
+Sat Mar 9 16:21:43 2024   Multilayer Switch0(1)   LAN-B1(dhcp-config)#network 172.16.2.128 255.255.255.128
+Sat Mar 9 16:21:43 2024   Multilayer Switch0(1)   LAN-B1(dhcp-config)#dns-server 8.8.8.8
+Sat Mar 9 16:21:43 2024   Multilayer Switch0(1)   LAN-B1(dhcp-config)#default-router 172.16.2.254
+Sat Mar 9 16:21:43 2024   Multilayer Switch0(1)   LAN-B1(dhcp-config)#ip dhcp pool Staff
+Sat Mar 9 16:21:43 2024   Multilayer Switch0(1)   LAN-B1(dhcp-config)#network 172.16.3.0 255.255.255.128
+Sat Mar 9 16:21:43 2024   Multilayer Switch0(1)   LAN-B1(dhcp-config)#default-router 172.16.3.127
+Sat Mar 9 16:21:43 2024   Multilayer Switch0(1)   LAN-B1(dhcp-config)#dns-server 8.8.8.8
+Sat Mar 9 16:21:43 2024   Multilayer Switch0(1)   LAN-B1(dhcp-config)#ip dhcp pool Student
+Sat Mar 9 16:21:43 2024   Multilayer Switch0(1)   LAN-B1(dhcp-config)#network 172.16.3.128 255.255.255.128
+Sat Mar 9 16:21:43 2024   Multilayer Switch0(1)   LAN-B1(dhcp-config)#default-router 172.16.3.254
+Sat Mar 9 16:21:43 2024   Multilayer Switch0(1)   LAN-B1(dhcp-config)#dns-server 8.8.8.8
+Sat Mar 9 16:21:43 2024   Multilayer Switch0(1)   LAN-B1(dhcp-config)#exit
+Sat Mar 9 16:21:43 2024   Multilayer Switch0(1)   LAN-B1(config)#ip dhcp excluded-address 172.16.2.1 172.16.2.3
+Sat Mar 9 16:21:43 2024   Multilayer Switch0(1)   LAN-B1(config)#ip dhcp excluded-address 172.16.2.129 172.16.2.131
+Sat Mar 9 16:21:43 2024   Multilayer Switch0(1)   LAN-B1(config)#ip dhcp excluded-address 172.16.3.1 172.16.3.3
+Sat Mar 9 16:21:43 2024   Multilayer Switch0(1)   LAN-B1(config)#ip dhcp excluded-address 172.16.3.129 172.16.3.131
+Sat Mar 9 16:21:43 2024   Multilayer Switch0(1)   LAN-B1(config)#end
+Sat Mar 9 16:21:43 2024   Multilayer Switch0(1)   LAN-B1#wr
+Sat Mar 9 16:21:47 2024   Multilayer Switch0(1)   LAN-B1#show running-config 
+Sat Mar 9 16:22:16 2024   Multilayer Switch0   LAN-A1>enable 
+Sat Mar 9 16:22:20 2024   Multilayer Switch0   LAN-A1#show etherchannel summary 
+Sat Mar 9 16:22:36 2024   Multilayer Switch1(1)   LAN-B2>enable 
+Sat Mar 9 16:22:38 2024   Multilayer Switch1(1)   LAN-B2#configure terminal 
+Sat Mar 9 16:22:40 2024   Multilayer Switch1(1)   LAN-B2(config)#ip dhcp pool Admin
+Sat Mar 9 16:22:40 2024   Multilayer Switch1(1)   LAN-B2(dhcp-config)#network 172.16.2.0 255.255.255.128
+Sat Mar 9 16:22:40 2024   Multilayer Switch1(1)   LAN-B2(dhcp-config)#default-router 172.16.2.127
+Sat Mar 9 16:22:40 2024   Multilayer Switch1(1)   LAN-B2(dhcp-config)#dns-server 8.8.8.8
+Sat Mar 9 16:22:40 2024   Multilayer Switch1(1)   LAN-B2(dhcp-config)#ip dhcp pool IT
+Sat Mar 9 16:22:40 2024   Multilayer Switch1(1)   LAN-B2(dhcp-config)#network 172.16.2.128 255.255.255.128
+Sat Mar 9 16:22:40 2024   Multilayer Switch1(1)   LAN-B2(dhcp-config)#dns-server 8.8.8.8
+Sat Mar 9 16:22:40 2024   Multilayer Switch1(1)   LAN-B2(dhcp-config)#default-router 172.16.2.254
+Sat Mar 9 16:22:40 2024   Multilayer Switch1(1)   LAN-B2(dhcp-config)#ip dhcp pool Staff
+Sat Mar 9 16:22:40 2024   Multilayer Switch1(1)   LAN-B2(dhcp-config)#network 172.16.3.0 255.255.255.128
+Sat Mar 9 16:22:40 2024   Multilayer Switch1(1)   LAN-B2(dhcp-config)#default-router 172.16.3.127
+Sat Mar 9 16:22:40 2024   Multilayer Switch1(1)   LAN-B2(dhcp-config)#dns-server 8.8.8.8
+Sat Mar 9 16:22:40 2024   Multilayer Switch1(1)   LAN-B2(dhcp-config)#ip dhcp pool Student
+Sat Mar 9 16:22:40 2024   Multilayer Switch1(1)   LAN-B2(dhcp-config)#network 172.16.3.128 255.255.255.128
+Sat Mar 9 16:22:40 2024   Multilayer Switch1(1)   LAN-B2(dhcp-config)#default-router 172.16.3.254
+Sat Mar 9 16:22:40 2024   Multilayer Switch1(1)   LAN-B2(dhcp-config)#dns-server 8.8.8.8
+Sat Mar 9 16:22:40 2024   Multilayer Switch1(1)   LAN-B2(dhcp-config)#exit
+Sat Mar 9 16:22:40 2024   Multilayer Switch1(1)   LAN-B2(config)#ip dhcp excluded-address 172.16.2.1 172.16.2.3
+Sat Mar 9 16:22:40 2024   Multilayer Switch1(1)   LAN-B2(config)#ip dhcp excluded-address 172.16.2.129 172.16.2.131
+Sat Mar 9 16:22:40 2024   Multilayer Switch1(1)   LAN-B2(config)#ip dhcp excluded-address 172.16.3.1 172.16.3.3
+Sat Mar 9 16:22:40 2024   Multilayer Switch1(1)   LAN-B2(config)#ip dhcp excluded-address 172.16.3.129 172.16.3.131
+Sat Mar 9 16:22:40 2024   Multilayer Switch1(1)   LAN-B2(config)#end
+Sat Mar 9 16:22:40 2024   Multilayer Switch1(1)   LAN-B2#wr
+Sat Mar 9 16:22:49 2024   Switch0(1)   Admin>enable 
+Sat Mar 9 16:22:51 2024   Switch0(1)   Admin#show vlan 
+Sat Mar 9 16:23:12 2024   Switch0(1)   Admin#configure terminal 
+Sat Mar 9 16:23:14 2024   Switch0(1)   Admin(config)#interface range fastEthernet 0/11-15
+Sat Mar 9 16:23:14 2024   Switch0(1)   Admin(config-if-range)#switchport mode access
+Sat Mar 9 16:23:15 2024   Switch0(1)   Admin(config-if-range)#switchport access vlan 10
+Sat Mar 9 16:23:17 2024   Switch0(1)   Admin(config-if-range)#exit 
+Sat Mar 9 16:23:21 2024   Switch0(1)   Admin(config)#do wr
+Sat Mar 9 16:23:27 2024   Switch0(1)(2)   IT>enable 
+Sat Mar 9 16:23:30 2024   Switch0(1)(2)   IT#configure terminal 
+Sat Mar 9 16:23:32 2024   Switch0(1)(2)   IT(config)#interface range fastEthernet 0/11-15
+Sat Mar 9 16:23:32 2024   Switch0(1)(2)   IT(config-if-range)#switchport mode access
+Sat Mar 9 16:23:35 2024   Switch0(1)(2)   IT(config-if-range)#switchport access vlan 20
+Sat Mar 9 16:23:37 2024   Switch0(1)(2)   IT(config-if-range)#do wr
+Sat Mar 9 16:23:38 2024   Switch0(1)(2)   IT(config-if-range)#exit 
+Sat Mar 9 16:23:43 2024   Switch0(1)(3)   Staff>enable 
+Sat Mar 9 16:23:45 2024   Switch0(1)(3)   Staff#configure terminal 
+Sat Mar 9 16:23:47 2024   Switch0(1)(3)   Staff(config)#interface range fastEthernet 0/11-15
+Sat Mar 9 16:23:47 2024   Switch0(1)(3)   Staff(config-if-range)#switchport mode access
+Sat Mar 9 16:23:48 2024   Switch0(1)(3)   Staff(config-if-range)#switchport access vlan 30
+Sat Mar 9 16:23:50 2024   Switch0(1)(3)   Staff(config-if-range)#do wr
+Sat Mar 9 16:23:51 2024   Switch0(1)(3)   Staff(config-if-range)#exit 
+Sat Mar 9 16:23:56 2024   Switch0(1)(2)(1)   Student>enable 
+Sat Mar 9 16:23:57 2024   Switch0(1)(2)(1)   Student#configure terminal 
+Sat Mar 9 16:23:59 2024   Switch0(1)(2)(1)   Student(config)#interface range fastEthernet 0/11-15
+Sat Mar 9 16:23:59 2024   Switch0(1)(2)(1)   Student(config-if-range)#switchport mode access
+Sat Mar 9 16:24:01 2024   Switch0(1)(2)(1)   Student(config-if-range)#switchport access vlan 40
+Sat Mar 9 16:24:02 2024   Switch0(1)(2)(1)   Student(config-if-range)#exit 
+Sat Mar 9 16:24:04 2024   Switch0(1)(2)(1)   Student(config)#do wr
+Sat Mar 9 16:24:12 2024   Multilayer Switch0(1)   LAN-B1#configure terminal 
+Sat Mar 9 16:24:15 2024   Multilayer Switch0(1)   LAN-B1(config)#interface vlan 10
+Sat Mar 9 16:24:29 2024   Multilayer Switch0(1)   LAN-B1(config-if)#ip address 172.16.2.1 255.255.255.128
+Sat Mar 9 16:24:31 2024   Multilayer Switch0(1)   LAN-B1(config-if)#no shutdown 
+Sat Mar 9 16:24:34 2024   Multilayer Switch0(1)   LAN-B1(config-if)#interface vlan 20
+Sat Mar 9 16:24:40 2024   Multilayer Switch0(1)   LAN-B1(config-if)#ip address 172.16.2.129 255.255.255.128
+Sat Mar 9 16:24:43 2024   Multilayer Switch0(1)   LAN-B1(config-if)#interface vlan 30
+Sat Mar 9 16:24:52 2024   Multilayer Switch0(1)   LAN-B1(config-if)#ip address 172.16.3.1 255.255.255.128
+Sat Mar 9 16:24:55 2024   Multilayer Switch0(1)   LAN-B1(config-if)#interface vlan 40
+Sat Mar 9 16:25:02 2024   Multilayer Switch0(1)   LAN-B1(config-if)#ip address 172.16.3.129 255.255.255.128
+Sat Mar 9 16:25:08 2024   Multilayer Switch0(1)   LAN-B1(config-if)#interface vlan 10
+Sat Mar 9 16:25:13 2024   Multilayer Switch0(1)   LAN-B1(config-if)#standby 1 priority 150
+Sat Mar 9 16:25:21 2024   Multilayer Switch0(1)   LAN-B1(config-if)#standby 1 preempt 
+Sat Mar 9 16:25:29 2024   Multilayer Switch0(1)   LAN-B1(config-if)#standby 1 ip 172.16.2.127
+Sat Mar 9 16:25:36 2024   Multilayer Switch0(1)   LAN-B1(config-if)#interface vlan 20
+Sat Mar 9 16:25:40 2024   Multilayer Switch0(1)   LAN-B1(config-if)#standby 1 priority 150
+Sat Mar 9 16:25:43 2024   Multilayer Switch0(1)   LAN-B1(config-if)#standby 1 ip 172.16.2.254
+Sat Mar 9 16:25:46 2024   Multilayer Switch0(1)   LAN-B1(config-if)#standby 1 preempt 
+Sat Mar 9 16:25:49 2024   Multilayer Switch0(1)   LAN-B1(config-if)#interface vlan 30
+Sat Mar 9 16:25:50 2024   Multilayer Switch0(1)   LAN-B1(config-if)#standby 1 preempt 
+Sat Mar 9 16:25:57 2024   Multilayer Switch0(1)   LAN-B1(config-if)#standby 1 priority 100
+Sat Mar 9 16:26:06 2024   Multilayer Switch0(1)   LAN-B1(config-if)#standby 1 ip 172.16.3.127
+Sat Mar 9 16:26:08 2024   Multilayer Switch0(1)   LAN-B1(config-if)#standby 1 preempt 
+Sat Mar 9 16:26:12 2024   Multilayer Switch0(1)   LAN-B1(config-if)#interface vlan 40
+Sat Mar 9 16:26:19 2024   Multilayer Switch0(1)   LAN-B1(config-if)#standby 1 ip 172.16.3.254
+Sat Mar 9 16:26:21 2024   Multilayer Switch0(1)   LAN-B1(config-if)#standby 1 preempt 
+Sat Mar 9 16:26:24 2024   Multilayer Switch0(1)   LAN-B1(config-if)#standby 1 priority 100
+Sat Mar 9 16:26:27 2024   Multilayer Switch0(1)   LAN-B1(config-if)#do wr
+Sat Mar 9 16:26:28 2024   Multilayer Switch0(1)   LAN-B1(config-if)#exit 
+Sat Mar 9 16:26:38 2024   Multilayer Switch1(1)   LAN-B2#configure terminal 
+Sat Mar 9 16:26:41 2024   Multilayer Switch1(1)   LAN-B2(config)#interface vlan 10
+Sat Mar 9 16:26:51 2024   Multilayer Switch1(1)   LAN-B2(config-if)#ip address 172.16.2.2 255.255.255.128
+Sat Mar 9 16:26:53 2024   Multilayer Switch1(1)   LAN-B2(config-if)#interface vlan 20
+Sat Mar 9 16:27:04 2024   Multilayer Switch1(1)   LAN-B2(config-if)#ip address 172.16.2.1304 255.255.255.128
+Sat Mar 9 16:27:09 2024   Multilayer Switch1(1)   LAN-B2(config-if)#ip address 172.16.2.130 255.255.255.128
+Sat Mar 9 16:27:12 2024   Multilayer Switch1(1)   LAN-B2(config-if)#interface vlan 30
+Sat Mar 9 16:27:27 2024   Multilayer Switch1(1)   LAN-B2(config-if)#ip address 172.16.3.1 255.255.255.128
+Sat Mar 9 16:27:31 2024   Multilayer Switch1(1)   LAN-B2(config-if)#interface vlan 40
+Sat Mar 9 16:27:41 2024   Multilayer Switch1(1)   LAN-B2(config-if)#ip address 172.16.3.129 255.255.255.128
+Sat Mar 9 16:27:54 2024   Multilayer Switch1(1)   LAN-B2(config-if)#interface vlan 10
+Sat Mar 9 16:27:58 2024   Multilayer Switch1(1)   LAN-B2(config-if)#standby 1 priority 100
+Sat Mar 9 16:28:02 2024   Multilayer Switch1(1)   LAN-B2(config-if)#standby 1 preempt 
+Sat Mar 9 16:28:12 2024   Multilayer Switch1(1)   LAN-B2(config-if)#standby 1 ip 172.16.2.127
+Sat Mar 9 16:28:15 2024   Multilayer Switch1(1)   LAN-B2(config-if)#interface vlan 20
+Sat Mar 9 16:28:18 2024   Multilayer Switch1(1)   LAN-B2(config-if)#standby 1 preempt 
+Sat Mar 9 16:28:22 2024   Multilayer Switch1(1)   LAN-B2(config-if)#standby 1 priority 100
+Sat Mar 9 16:28:26 2024   Multilayer Switch1(1)   LAN-B2(config-if)#standby 1 ip 172.16.2.254
+Sat Mar 9 16:28:29 2024   Multilayer Switch1(1)   LAN-B2(config-if)#interface vlan 30
+Sat Mar 9 16:28:33 2024   Multilayer Switch1(1)   LAN-B2(config-if)#standby 1 priority 150
+Sat Mar 9 16:28:53 2024   Multilayer Switch1(1)   LAN-B2(config-if)#standby 1 ip 172.16.3.127
+Sat Mar 9 16:28:59 2024   Multilayer Switch1(1)   LAN-B2(config-if)#interface vlan 40
+Sat Mar 9 16:29:01 2024   Multilayer Switch1(1)   LAN-B2(config-if)#standby 1 priority 150
+Sat Mar 9 16:29:05 2024   Multilayer Switch1(1)   LAN-B2(config-if)#standby 1 ip 172.16.3.254
+Sat Mar 9 16:29:08 2024   Multilayer Switch1(1)   LAN-B2(config-if)#end
+Sat Mar 9 16:29:09 2024   Multilayer Switch1(1)   LAN-B2#write 
+Sat Mar 9 16:29:20 2024   Multilayer Switch1(1)   LAN-B2#show ip interface brief | 
+Sat Mar 9 16:29:21 2024   Multilayer Switch1(1)   LAN-B2#show ip interface brief 
+Sat Mar 9 16:29:44 2024   Multilayer Switch0(1)   LAN-B1(config)#exit 
+Sat Mar 9 16:29:51 2024   Multilayer Switch0(1)   LAN-B1#show ip interface brief 
+Sat Mar 9 16:29:58 2024   Multilayer Switch0(1)   LAN-B1#configure terminal 
+Sat Mar 9 16:30:02 2024   Multilayer Switch0(1)   LAN-B1(config)#interface vlan 30
+Sat Mar 9 16:30:11 2024   Multilayer Switch0(1)   LAN-B1(config-if)#ip address 172.16.3.2 255.255.255.128
+Sat Mar 9 16:30:13 2024   Multilayer Switch0(1)   LAN-B1(config-if)#no shutdown 
+Sat Mar 9 16:30:14 2024   Multilayer Switch0(1)   LAN-B1(config-if)#end
+Sat Mar 9 16:30:15 2024   Multilayer Switch0(1)   LAN-B1#write 
+Sat Mar 9 16:30:16 2024   Multilayer Switch0(1)   LAN-B1#configure terminal 
+Sat Mar 9 16:30:17 2024   Multilayer Switch0(1)   LAN-B1(config)#end
+Sat Mar 9 16:30:22 2024   Multilayer Switch0(1)   LAN-B1#show ip interface 
+Sat Mar 9 16:30:29 2024   Multilayer Switch0(1)   LAN-B1#show ip interface  brief 
+Sat Mar 9 16:30:39 2024   Multilayer Switch0(1)   LAN-B1#configure terminal 
+Sat Mar 9 16:30:42 2024   Multilayer Switch0(1)   LAN-B1(config)#interface vlan 40
+Sat Mar 9 16:30:48 2024   Multilayer Switch0(1)   LAN-B1(config-if)#ip address 172.16.3.130 255.255.255.128
+Sat Mar 9 16:30:50 2024   Multilayer Switch0(1)   LAN-B1(config-if)#no shutdown 
+Sat Mar 9 16:30:51 2024   Multilayer Switch0(1)   LAN-B1(config-if)#exit 
+Sat Mar 9 16:30:52 2024   Multilayer Switch0(1)   LAN-B1(config)#exit 
+Sat Mar 9 16:30:53 2024   Multilayer Switch0(1)   LAN-B1#configure terminal 
+Sat Mar 9 16:30:54 2024   Multilayer Switch0(1)   LAN-B1(config)#exit 
+Sat Mar 9 16:30:56 2024   Multilayer Switch0(1)   LAN-B1#show ip interface  brief 
+Sat Mar 9 16:31:06 2024   Multilayer Switch1(1)   LAN-B2#show  ip interface  brief | 
+Sat Mar 9 16:31:08 2024   Multilayer Switch1(1)   LAN-B2#show  ip interface  brief 
+Sat Mar 9 16:39:11 2024   Multilayer Switch0(1)(1)   LAN-C1>enable 
+Sat Mar 9 16:39:13 2024   Multilayer Switch0(1)(1)   LAN-C1#configure terminal 
+Sat Mar 9 16:39:15 2024   Multilayer Switch0(1)(1)   LAN-C1(config)#ip dhcp pool Admin
+Sat Mar 9 16:39:15 2024   Multilayer Switch0(1)(1)   LAN-C1(dhcp-config)#network 172.16.4.0 255.255.255.192
+Sat Mar 9 16:39:15 2024   Multilayer Switch0(1)(1)   LAN-C1(dhcp-config)#default-router 172.16.4.63
+Sat Mar 9 16:39:15 2024   Multilayer Switch0(1)(1)   LAN-C1(dhcp-config)#dns-server 8.8.8.8
+Sat Mar 9 16:39:15 2024   Multilayer Switch0(1)(1)   LAN-C1(dhcp-config)#ip dhcp pool IT
+Sat Mar 9 16:39:15 2024   Multilayer Switch0(1)(1)   LAN-C1(dhcp-config)#network 172.16.0.64 255.255.255.192
+Sat Mar 9 16:39:15 2024   Multilayer Switch0(1)(1)   LAN-C1(dhcp-config)#dns-server 8.8.8.8
+Sat Mar 9 16:39:15 2024   Multilayer Switch0(1)(1)   LAN-C1(dhcp-config)#default-router 172.16.2.127
+Sat Mar 9 16:39:15 2024   Multilayer Switch0(1)(1)   LAN-C1(dhcp-config)#ip dhcp pool Staff
+Sat Mar 9 16:39:15 2024   Multilayer Switch0(1)(1)   LAN-C1(dhcp-config)#network 172.16.4.128 255.255.255.192
+Sat Mar 9 16:39:15 2024   Multilayer Switch0(1)(1)   LAN-C1(dhcp-config)#default-router 172.16.4.191
+Sat Mar 9 16:39:15 2024   Multilayer Switch0(1)(1)   LAN-C1(dhcp-config)#dns-server 8.8.8.8
+Sat Mar 9 16:39:15 2024   Multilayer Switch0(1)(1)   LAN-C1(dhcp-config)#ip dhcp pool Student
+Sat Mar 9 16:39:15 2024   Multilayer Switch0(1)(1)   LAN-C1(dhcp-config)#network 172.16.4.192 255.255.255.192
+Sat Mar 9 16:39:15 2024   Multilayer Switch0(1)(1)   LAN-C1(dhcp-config)#default-router 172.16.4.254
+Sat Mar 9 16:39:15 2024   Multilayer Switch0(1)(1)   LAN-C1(dhcp-config)#dns-server 8.8.8.8
+Sat Mar 9 16:39:15 2024   Multilayer Switch0(1)(1)   LAN-C1(dhcp-config)#ip dhcp pool Management
+Sat Mar 9 16:39:15 2024   Multilayer Switch0(1)(1)   LAN-C1(dhcp-config)#network 172.16.5.0 255.255.255.192
+Sat Mar 9 16:39:15 2024   Multilayer Switch0(1)(1)   LAN-C1(dhcp-config)#default-router 172.16.5.63
+Sat Mar 9 16:39:15 2024   Multilayer Switch0(1)(1)   LAN-C1(dhcp-config)#dns-server 8.8.8.8
+Sat Mar 9 16:39:15 2024   Multilayer Switch0(1)(1)   LAN-C1(dhcp-config)#exit
+Sat Mar 9 16:39:15 2024   Multilayer Switch0(1)(1)   LAN-C1(config)#ip dhcp excluded-address 172.16.4.1 172.16.4.3
+Sat Mar 9 16:39:15 2024   Multilayer Switch0(1)(1)   LAN-C1(config)#ip dhcp excluded-address 172.16.4.65 172.16.4.67
+Sat Mar 9 16:39:15 2024   Multilayer Switch0(1)(1)   LAN-C1(config)#ip dhcp excluded-address 172.16.4.129 172.16.4.131
+Sat Mar 9 16:39:15 2024   Multilayer Switch0(1)(1)   LAN-C1(config)#ip dhcp excluded-address 172.16.4.193 172.16.4.195
+Sat Mar 9 16:39:15 2024   Multilayer Switch0(1)(1)   LAN-C1(config)#ip dhcp excluded-address 172.16.5.1 172.16.4.3
+Sat Mar 9 16:39:15 2024   Multilayer Switch0(1)(1)   LAN-C1(config)#end
+Sat Mar 9 16:39:15 2024   Multilayer Switch0(1)(1)   LAN-C1#wr
+Sat Mar 9 16:39:23 2024   Multilayer Switch1(1)(1)   LAN-C2>enable 
+Sat Mar 9 16:39:27 2024   Multilayer Switch1(1)(1)   LAN-C2#configure terminal 
+Sat Mar 9 16:39:29 2024   Multilayer Switch1(1)(1)   LAN-C2(config)#ip dhcp pool Admin
+Sat Mar 9 16:39:29 2024   Multilayer Switch1(1)(1)   LAN-C2(dhcp-config)#network 172.16.4.0 255.255.255.192
+Sat Mar 9 16:39:29 2024   Multilayer Switch1(1)(1)   LAN-C2(dhcp-config)#default-router 172.16.4.63
+Sat Mar 9 16:39:29 2024   Multilayer Switch1(1)(1)   LAN-C2(dhcp-config)#dns-server 8.8.8.8
+Sat Mar 9 16:39:29 2024   Multilayer Switch1(1)(1)   LAN-C2(dhcp-config)#ip dhcp pool IT
+Sat Mar 9 16:39:29 2024   Multilayer Switch1(1)(1)   LAN-C2(dhcp-config)#network 172.16.0.64 255.255.255.192
+Sat Mar 9 16:39:29 2024   Multilayer Switch1(1)(1)   LAN-C2(dhcp-config)#dns-server 8.8.8.8
+Sat Mar 9 16:39:29 2024   Multilayer Switch1(1)(1)   LAN-C2(dhcp-config)#default-router 172.16.2.127
+Sat Mar 9 16:39:29 2024   Multilayer Switch1(1)(1)   LAN-C2(dhcp-config)#ip dhcp pool Staff
+Sat Mar 9 16:39:29 2024   Multilayer Switch1(1)(1)   LAN-C2(dhcp-config)#network 172.16.4.128 255.255.255.192
+Sat Mar 9 16:39:29 2024   Multilayer Switch1(1)(1)   LAN-C2(dhcp-config)#default-router 172.16.4.191
+Sat Mar 9 16:39:29 2024   Multilayer Switch1(1)(1)   LAN-C2(dhcp-config)#dns-server 8.8.8.8
+Sat Mar 9 16:39:29 2024   Multilayer Switch1(1)(1)   LAN-C2(dhcp-config)#ip dhcp pool Student
+Sat Mar 9 16:39:29 2024   Multilayer Switch1(1)(1)   LAN-C2(dhcp-config)#network 172.16.4.192 255.255.255.192
+Sat Mar 9 16:39:29 2024   Multilayer Switch1(1)(1)   LAN-C2(dhcp-config)#default-router 172.16.4.254
+Sat Mar 9 16:39:29 2024   Multilayer Switch1(1)(1)   LAN-C2(dhcp-config)#dns-server 8.8.8.8
+Sat Mar 9 16:39:29 2024   Multilayer Switch1(1)(1)   LAN-C2(dhcp-config)#ip dhcp pool Management
+Sat Mar 9 16:39:29 2024   Multilayer Switch1(1)(1)   LAN-C2(dhcp-config)#network 172.16.5.0 255.255.255.192
+Sat Mar 9 16:39:29 2024   Multilayer Switch1(1)(1)   LAN-C2(dhcp-config)#default-router 172.16.5.63
+Sat Mar 9 16:39:29 2024   Multilayer Switch1(1)(1)   LAN-C2(dhcp-config)#dns-server 8.8.8.8
+Sat Mar 9 16:39:29 2024   Multilayer Switch1(1)(1)   LAN-C2(dhcp-config)#exit
+Sat Mar 9 16:39:29 2024   Multilayer Switch1(1)(1)   LAN-C2(config)#ip dhcp excluded-address 172.16.4.1 172.16.4.3
+Sat Mar 9 16:39:29 2024   Multilayer Switch1(1)(1)   LAN-C2(config)#ip dhcp excluded-address 172.16.4.65 172.16.4.67
+Sat Mar 9 16:39:29 2024   Multilayer Switch1(1)(1)   LAN-C2(config)#ip dhcp excluded-address 172.16.4.129 172.16.4.131
+Sat Mar 9 16:39:29 2024   Multilayer Switch1(1)(1)   LAN-C2(config)#ip dhcp excluded-address 172.16.4.193 172.16.4.195
+Sat Mar 9 16:39:29 2024   Multilayer Switch1(1)(1)   LAN-C2(config)#ip dhcp excluded-address 172.16.5.1 172.16.4.3
+Sat Mar 9 16:39:29 2024   Multilayer Switch1(1)(1)   LAN-C2(config)#end
+Sat Mar 9 16:39:29 2024   Multilayer Switch1(1)(1)   LAN-C2#wr
+Sat Mar 9 16:39:36 2024   Multilayer Switch1(1)(1)   LAN-C2#configure terminal 
+Sat Mar 9 16:39:40 2024   Multilayer Switch1(1)(1)   LAN-C2(config)#interface vlan 10
+Sat Mar 9 16:39:58 2024   Multilayer Switch1(1)(1)   LAN-C2(config-if)#ip address 172.16.4.2 255.255.255.192
+Sat Mar 9 16:40:01 2024   Multilayer Switch1(1)(1)   LAN-C2(config-if)#interface vlan 20
+Sat Mar 9 16:40:12 2024   Multilayer Switch1(1)(1)   LAN-C2(config-if)#ip address 172.16.4.66 255.255.255.192
+Sat Mar 9 16:40:15 2024   Multilayer Switch1(1)(1)   LAN-C2(config-if)#interface vlan 30
+Sat Mar 9 16:40:29 2024   Multilayer Switch1(1)(1)   LAN-C2(config-if)#ip address 172.16.4.129 255.255.255.192
+Sat Mar 9 16:40:32 2024   Multilayer Switch1(1)(1)   LAN-C2(config-if)#interface vlan 40
+Sat Mar 9 16:41:22 2024   Multilayer Switch1(1)(1)   LAN-C2(config-if)#ip address 172.16.4.193 255.255.255.192
+Sat Mar 9 16:41:25 2024   Multilayer Switch1(1)(1)   LAN-C2(config-if)#interface vlan 40
+Sat Mar 9 16:43:08 2024   Multilayer Switch1(1)(1)   LAN-C2(config-if)#interface vlan 50
+Sat Mar 9 16:43:16 2024   Multilayer Switch1(1)(1)   LAN-C2(config-if)#ip address 172.16.5.0 255.255.255.192
+Sat Mar 9 16:43:24 2024   Multilayer Switch1(1)(1)   LAN-C2(config-if)#ip address 172.16.5.1 255.255.255.192
+Sat Mar 9 16:43:37 2024   Multilayer Switch1(1)(1)   LAN-C2(config-if)#do wr
+Sat Mar 9 16:43:38 2024   Multilayer Switch1(1)(1)   LAN-C2(config-if)#exit 
+Sat Mar 9 16:43:41 2024   Multilayer Switch1(1)(1)   LAN-C2(config)#interface vlan 10
+Sat Mar 9 16:43:48 2024   Multilayer Switch1(1)(1)   LAN-C2(config-if)#standby 1 priority 100
+Sat Mar 9 16:43:51 2024   Multilayer Switch1(1)(1)   LAN-C2(config-if)#standby 1 preempt 
+Sat Mar 9 16:44:04 2024   Multilayer Switch1(1)(1)   LAN-C2(config-if)#standby 1 ip 172.16.4.63
+Sat Mar 9 16:44:07 2024   Multilayer Switch1(1)(1)   LAN-C2(config-if)#interface vlan 20
+Sat Mar 9 16:44:13 2024   Multilayer Switch1(1)(1)   LAN-C2(config-if)#standby 1 ip 172.16.4.127
+Sat Mar 9 16:44:15 2024   Multilayer Switch1(1)(1)   LAN-C2(config-if)#standby 1 preempt 
+Sat Mar 9 16:44:19 2024   Multilayer Switch1(1)(1)   LAN-C2(config-if)#standby 1 priority 100
+Sat Mar 9 16:44:22 2024   Multilayer Switch1(1)(1)   LAN-C2(config-if)#interface vlan 30
+Sat Mar 9 16:44:25 2024   Multilayer Switch1(1)(1)   LAN-C2(config-if)#standby 1 priority 150
+Sat Mar 9 16:44:28 2024   Multilayer Switch1(1)(1)   LAN-C2(config-if)#standby 1 preempt 
+Sat Mar 9 16:44:43 2024   Multilayer Switch1(1)(1)   LAN-C2(config-if)#interface vlan 20
+Sat Mar 9 16:44:58 2024   Multilayer Switch1(1)(1)   LAN-C2(config-if)#interface vlan 30
+Sat Mar 9 16:45:23 2024   Multilayer Switch1(1)(1)   LAN-C2(config-if)#standby 1 ip 172.16.4.191
+Sat Mar 9 16:45:25 2024   Multilayer Switch1(1)(1)   LAN-C2(config-if)#interface vlan 40
+Sat Mar 9 16:45:30 2024   Multilayer Switch1(1)(1)   LAN-C2(config-if)#standby 1 ip 172.16.4.254
+Sat Mar 9 16:45:35 2024   Multilayer Switch1(1)(1)   LAN-C2(config-if)#standby 1 preempt 
+Sat Mar 9 16:45:38 2024   Multilayer Switch1(1)(1)   LAN-C2(config-if)#standby 1 priority 150
+Sat Mar 9 16:45:41 2024   Multilayer Switch1(1)(1)   LAN-C2(config-if)#interface vlan 50
+Sat Mar 9 16:45:43 2024   Multilayer Switch1(1)(1)   LAN-C2(config-if)#standby 1 preempt 
+Sat Mar 9 16:45:45 2024   Multilayer Switch1(1)(1)   LAN-C2(config-if)#standby 1 priority 150
+Sat Mar 9 16:45:53 2024   Multilayer Switch1(1)(1)   LAN-C2(config-if)#standby 1 ip 172.16.5.63
+Sat Mar 9 16:45:55 2024   Multilayer Switch1(1)(1)   LAN-C2(config-if)#exit 
+Sat Mar 9 16:45:56 2024   Multilayer Switch1(1)(1)   LAN-C2(config)#do wr
+Sat Mar 9 16:45:58 2024   Multilayer Switch1(1)(1)   LAN-C2(config)#end
+Sat Mar 9 16:46:05 2024   Multilayer Switch0(1)(1)   LAN-C1#configure terminal 
+Sat Mar 9 16:46:08 2024   Multilayer Switch0(1)(1)   LAN-C1(config)#interface vlan 10
+Sat Mar 9 16:46:18 2024   Multilayer Switch0(1)(1)   LAN-C1(config-if)#ip address 172.16.4.1 255.255.255.192
+Sat Mar 9 16:46:22 2024   Multilayer Switch0(1)(1)   LAN-C1(config-if)#interface vlan 20
+Sat Mar 9 16:46:33 2024   Multilayer Switch0(1)(1)   LAN-C1(config-if)#ip address 172.16.4.65 255.255.255.192
+Sat Mar 9 16:46:36 2024   Multilayer Switch0(1)(1)   LAN-C1(config-if)#interface vlan 30
+Sat Mar 9 16:46:43 2024   Multilayer Switch0(1)(1)   LAN-C1(config-if)#ip address 172.16.4.129 255.255.255.192
+Sat Mar 9 16:46:49 2024   Multilayer Switch0(1)(1)   LAN-C1(config-if)#interface vlan 40
+Sat Mar 9 16:46:58 2024   Multilayer Switch0(1)(1)   LAN-C1(config-if)#interface vlan 30
+Sat Mar 9 16:47:04 2024   Multilayer Switch0(1)(1)   LAN-C1(config-if)#ip address 172.16.4.130 255.255.255.192
+Sat Mar 9 16:47:06 2024   Multilayer Switch0(1)(1)   LAN-C1(config-if)#interface vlan 40
+Sat Mar 9 16:47:24 2024   Multilayer Switch0(1)(1)   LAN-C1(config-if)#ip address 172.16.4.194 255.255.255.192
+Sat Mar 9 16:47:27 2024   Multilayer Switch0(1)(1)   LAN-C1(config-if)#interface vlan 50
+Sat Mar 9 16:47:34 2024   Multilayer Switch0(1)(1)   LAN-C1(config-if)#ip address 172.16.5.2 255.255.255.192
+Sat Mar 9 16:47:37 2024   Multilayer Switch0(1)(1)   LAN-C1(config-if)#exit 
+Sat Mar 9 16:47:40 2024   Multilayer Switch0(1)(1)   LAN-C1(config)#interface vlan 10
+Sat Mar 9 16:47:47 2024   Multilayer Switch0(1)(1)   LAN-C1(config-if)#standby 1 priority 150
+Sat Mar 9 16:47:52 2024   Multilayer Switch0(1)(1)   LAN-C1(config-if)#standby 1 preempt 
+Sat Mar 9 16:48:04 2024   Multilayer Switch0(1)(1)   LAN-C1(config-if)#standby 1 ip 172.16.4.63
+Sat Mar 9 16:48:10 2024   Multilayer Switch0(1)(1)   LAN-C1(config-if)#interface vlan 2
+Sat Mar 9 16:48:13 2024   Multilayer Switch0(1)(1)   LAN-C1(config-if)#interface vlan 20
+Sat Mar 9 16:48:23 2024   Multilayer Switch0(1)(1)   LAN-C1(config-if)#standby 1 ip 172.16.4.127
+Sat Mar 9 16:48:26 2024   Multilayer Switch0(1)(1)   LAN-C1(config-if)#standby 1 priority 150
+Sat Mar 9 16:48:33 2024   Multilayer Switch0(1)(1)   LAN-C1(config-if)#standby 1 preempt 
+Sat Mar 9 16:48:36 2024   Multilayer Switch0(1)(1)   LAN-C1(config-if)#interface vlan 30
+Sat Mar 9 16:48:39 2024   Multilayer Switch0(1)(1)   LAN-C1(config-if)#standby 1 priority 100
+Sat Mar 9 16:48:41 2024   Multilayer Switch0(1)(1)   LAN-C1(config-if)#standby 1 preempt 
+Sat Mar 9 16:49:06 2024   Multilayer Switch0(1)(1)   LAN-C1(config-if)#standby 1 ip 172.16.4.191
+Sat Mar 9 16:49:08 2024   Multilayer Switch0(1)(1)   LAN-C1(config-if)#standby 1 priority 100
+Sat Mar 9 16:49:10 2024   Multilayer Switch0(1)(1)   LAN-C1(config-if)#standby 1 preempt 
+Sat Mar 9 16:49:15 2024   Multilayer Switch0(1)(1)   LAN-C1(config-if)#interface vlan 40
+Sat Mar 9 16:49:20 2024   Multilayer Switch0(1)(1)   LAN-C1(config-if)#standby 1 ip 172.16.4.254
+Sat Mar 9 16:49:22 2024   Multilayer Switch0(1)(1)   LAN-C1(config-if)#standby 1 preempt 
+Sat Mar 9 16:49:24 2024   Multilayer Switch0(1)(1)   LAN-C1(config-if)#standby 1 priority 100
+Sat Mar 9 16:49:27 2024   Multilayer Switch0(1)(1)   LAN-C1(config-if)#interface vlan 50
+Sat Mar 9 16:49:29 2024   Multilayer Switch0(1)(1)   LAN-C1(config-if)#standby 1 preempt 
+Sat Mar 9 16:49:31 2024   Multilayer Switch0(1)(1)   LAN-C1(config-if)#standby 1 priority 100
+Sat Mar 9 16:49:41 2024   Multilayer Switch0(1)(1)   LAN-C1(config-if)#standby 1 ip 172.16.5.63
+Sat Mar 9 16:49:43 2024   Multilayer Switch0(1)(1)   LAN-C1(config-if)#ens
+Sat Mar 9 16:49:44 2024   Multilayer Switch0(1)(1)   LAN-C1(config-if)#en
+Sat Mar 9 16:49:46 2024   Multilayer Switch0(1)(1)   LAN-C1(config)#end
+Sat Mar 9 16:49:47 2024   Multilayer Switch0(1)(1)   LAN-C1#write 
+Sat Mar 9 16:49:54 2024   Multilayer Switch0(1)(1)   LAN-C1#show running-config 
+Sat Mar 9 16:50:22 2024   Switch0(1)(1)   Admin>enable 
+Sat Mar 9 16:50:26 2024   Switch0(1)(1)   Admin#show vlan  brief 
+Sat Mar 9 16:50:50 2024   Switch0(1)(1)   Admin#configure terminal 
+Sat Mar 9 16:50:52 2024   Switch0(1)(1)   Admin(config)#interface range fastEthernet 0/11-15
+Sat Mar 9 16:50:52 2024   Switch0(1)(1)   Admin(config-if-range)#switchport mode access
+Sat Mar 9 16:50:53 2024   Switch0(1)(1)   Admin(config-if-range)#switchport access vlan 10
+Sat Mar 9 16:50:55 2024   Switch0(1)(1)   Admin(config-if-range)#end
+Sat Mar 9 16:50:56 2024   Switch0(1)(1)   Admin#write 
+Sat Mar 9 16:51:01 2024   Switch0(1)(1)(1)   IT>enable 
+Sat Mar 9 16:51:03 2024   Switch0(1)(1)(1)   IT#configure terminal 
+Sat Mar 9 16:51:05 2024   Switch0(1)(1)(1)   IT(config)#interface range fastEthernet 0/11-15
+Sat Mar 9 16:51:05 2024   Switch0(1)(1)(1)   IT(config-if-range)#switchport mode access
+Sat Mar 9 16:51:07 2024   Switch0(1)(1)(1)   IT(config-if-range)#switchport access vlan 20
+Sat Mar 9 16:51:09 2024   Switch0(1)(1)(1)   IT(config-if-range)#do wr
+Sat Mar 9 16:51:10 2024   Switch0(1)(1)(1)   IT(config-if-range)#exit 
+Sat Mar 9 16:51:18 2024   Switch0(1)(1)(2)   Staff>enable 
+Sat Mar 9 16:51:21 2024   Switch0(1)(1)(2)   Staff#configure terminal 
+Sat Mar 9 16:51:23 2024   Switch0(1)(1)(2)   Staff(config)#interface range fastEthernet 0/11-15
+Sat Mar 9 16:51:23 2024   Switch0(1)(1)(2)   Staff(config-if-range)#switchport mode access
+Sat Mar 9 16:51:24 2024   Switch0(1)(1)(2)   Staff(config-if-range)#switchport access vlan 30
+Sat Mar 9 16:51:26 2024   Switch0(1)(1)(2)   Staff(config-if-range)#ec
+Sat Mar 9 16:51:27 2024   Switch0(1)(1)(2)   Staff(config-if-range)#ex
+Sat Mar 9 16:51:30 2024   Switch0(1)(1)(2)   Staff(config)#dow r
+Sat Mar 9 16:51:32 2024   Switch0(1)(1)(2)   Staff(config)#do wr
+Sat Mar 9 16:51:38 2024   Switch0(1)(1)(1)(1)   Student>enable 
+Sat Mar 9 16:51:40 2024   Switch0(1)(1)(1)(1)   Student#configure terminal 
+Sat Mar 9 16:51:42 2024   Switch0(1)(1)(1)(1)   Student(config)#interface range fastEthernet 0/11-15
+Sat Mar 9 16:51:42 2024   Switch0(1)(1)(1)(1)   Student(config-if-range)#switchport mode access
+Sat Mar 9 16:51:43 2024   Switch0(1)(1)(1)(1)   Student(config-if-range)#switchport access vlan 40
+Sat Mar 9 16:51:45 2024   Switch0(1)(1)(1)(1)   Student(config-if-range)#exit 
+Sat Mar 9 16:51:46 2024   Switch0(1)(1)(1)(1)   Student(config)#do wr
+Sat Mar 9 16:51:52 2024   Switch0(1)(1)(3)   Management>enable 
+Sat Mar 9 16:51:56 2024   Switch0(1)(1)(3)   Management#configure terminal 
+Sat Mar 9 16:51:57 2024   Switch0(1)(1)(3)   Management(config)#interface range fastEthernet 0/11-15
+Sat Mar 9 16:51:57 2024   Switch0(1)(1)(3)   Management(config-if-range)#switchport mode access
+Sat Mar 9 16:52:00 2024   Switch0(1)(1)(3)   Management(config-if-range)#switchport access vlan 50
+Sat Mar 9 16:52:01 2024   Switch0(1)(1)(3)   Management(config-if-range)#end
+Sat Mar 9 16:52:02 2024   Switch0(1)(1)(3)   Management#write 
+Sat Mar 9 16:52:06 2024   Switch0(1)(1)(3)   Management#show vlan 
+Sat Mar 9 16:53:50 2024   Multilayer Switch0(1)(1)   LAN-C1#show running-config 
+Sat Mar 9 16:55:17 2024   Switch0(1)(1)(1)   IT(config)#do sh vla
+Sat Mar 9 16:56:24 2024   Multilayer Switch1(1)(1)   LAN-C2#enable view 
+Sat Mar 9 16:56:26 2024   Multilayer Switch1(1)(1)   LAN-C2#enable
+Sat Mar 9 16:56:30 2024   Multilayer Switch1(1)(1)   LAN-C2#configure terminal 
+Sat Mar 9 16:56:32 2024   Multilayer Switch1(1)(1)   LAN-C2(config)#exit 
+Sat Mar 9 16:56:36 2024   Multilayer Switch1(1)(1)   LAN-C2#show  running-config 
+Sat Mar 9 16:58:33 2024   Multilayer Switch0   LAN-A1>enable 
+Sat Mar 9 16:58:34 2024   Multilayer Switch0   LAN-A1#configure terminal 
+Sat Mar 9 16:58:38 2024   Multilayer Switch0   LAN-A1(config)#ip routing 
+Sat Mar 9 16:58:44 2024   Multilayer Switch0   LAN-A1(config)#do wr
+Sat Mar 9 16:58:49 2024   Multilayer Switch0(2)   LAN-A2>enable 
+Sat Mar 9 16:58:51 2024   Multilayer Switch0(2)   LAN-A2#configure terminal 
+Sat Mar 9 16:58:54 2024   Multilayer Switch0(2)   LAN-A2(config)#ip routing
+Sat Mar 9 16:58:55 2024   Multilayer Switch0(2)   LAN-A2(config)#do wr
+Sat Mar 9 16:59:32 2024   Multilayer Switch0(1)   LAN-B1>enable 
+Sat Mar 9 16:59:34 2024   Multilayer Switch0(1)   LAN-B1#configure terminal 
+Sat Mar 9 16:59:37 2024   Multilayer Switch0(1)   LAN-B1(config)#ip routing
+Sat Mar 9 16:59:38 2024   Multilayer Switch0(1)   LAN-B1(config)#do wr
+Sat Mar 9 16:59:43 2024   Multilayer Switch1(1)   LAN-B2>enable 
+Sat Mar 9 16:59:44 2024   Multilayer Switch1(1)   LAN-B2#configure terminal 
+Sat Mar 9 16:59:48 2024   Multilayer Switch1(1)   LAN-B2(config)#ip routing
+Sat Mar 9 16:59:52 2024   Multilayer Switch1(1)   LAN-B2(config)#do wr
+Sat Mar 9 17:00:03 2024   Multilayer Switch1(1)(1)   LAN-C2#configure terminal 
+Sat Mar 9 17:00:05 2024   Multilayer Switch1(1)(1)   LAN-C2(config)#ip routing
+Sat Mar 9 17:00:07 2024   Multilayer Switch1(1)(1)   LAN-C2(config)#dow r
+Sat Mar 9 17:00:10 2024   Multilayer Switch1(1)(1)   LAN-C2(config)#do wr
+Sat Mar 9 17:00:17 2024   Multilayer Switch0(1)(1)   LAN-C1#configure terminal 
+Sat Mar 9 17:00:21 2024   Multilayer Switch0(1)(1)   LAN-C1(config)#ip routing
+Sat Mar 9 17:00:25 2024   Multilayer Switch0(1)(1)   LAN-C1(config)#do wr
+Sat Mar 9 17:14:49 2024   Router0   Router>enable 
+Sat Mar 9 17:14:51 2024   Router0   Router#configure terminal 
+Sat Mar 9 17:15:00 2024   Router0   Router(config)#host ISP
+Sat Mar 9 17:15:09 2024   Router0   ISP(config)#do wr
+Sat Mar 9 17:15:17 2024   Router0(2)   Router>enable 
+Sat Mar 9 17:15:19 2024   Router0(2)   Router#configure terminal 
+Sat Mar 9 17:15:22 2024   Router0(2)   Router(config)#host ISP
+Sat Mar 9 17:15:23 2024   Router0(2)   ISP(config)#do wr
+Sat Mar 9 17:15:32 2024   Router0(1)   Router>enable 
+Sat Mar 9 17:15:34 2024   Router0(1)   Router#configure terminal 
+Sat Mar 9 17:15:37 2024   Router0(1)   Router(config)#host ISP
+Sat Mar 9 17:15:38 2024   Router0(1)   ISP(config)#do wr
+Sat Mar 9 17:15:52 2024   Router0   ISP(config)#interface gigabitEthernet 0/0/0
+Sat Mar 9 17:16:01 2024   Router0   ISP(config-if)#ip address 192.168.10.1 255.255.255.248
+Sat Mar 9 17:16:03 2024   Router0   ISP(config-if)#no shutdown 
+Sat Mar 9 17:16:07 2024   Router0   ISP(config-if)#interface gigabitEthernet 0/0/1
+Sat Mar 9 17:16:15 2024   Router0   ISP(config-if)#ip address 192.168.10.9 255.255.255.248
+Sat Mar 9 17:16:17 2024   Router0   ISP(config-if)#no shutdown 
+Sat Mar 9 17:16:23 2024   Router0   ISP(config-if)#ex
+Sat Mar 9 17:16:24 2024   Router0   ISP(config)#do wr
+Sat Mar 9 17:16:40 2024   Router0(1)   ISP(config)#interface gigabitEthernet 0/0/0
+Sat Mar 9 17:16:55 2024   Router0(1)   ISP(config-if)#ip address 192.168.10.17 255.255.255.248
+Sat Mar 9 17:16:57 2024   Router0(1)   ISP(config-if)#no shutdown 
+Sat Mar 9 17:17:01 2024   Router0(1)   ISP(config-if)#interface gigabitEthernet 0/0/1
+Sat Mar 9 17:17:07 2024   Router0(1)   ISP(config-if)#ip address 192.168.10.25 255.255.255.248
+Sat Mar 9 17:17:09 2024   Router0(1)   ISP(config-if)#no shutdown 
+Sat Mar 9 17:17:10 2024   Router0(1)   ISP(config-if)#do wr
+Sat Mar 9 17:17:23 2024   Router0(2)   ISP(config)#interface gigabitEthernet 0/0/0
+Sat Mar 9 17:17:49 2024   Router0(2)   ISP(config-if)#ip address 192.168.10.41 255.255.255.248
+Sat Mar 9 17:17:50 2024   Router0(2)   ISP(config-if)#no shutdown 
+Sat Mar 9 17:17:55 2024   Router0(2)   ISP(config-if)#interface gigabitEthernet 0/0/1
+Sat Mar 9 17:18:04 2024   Router0(2)   ISP(config-if)#ip address 192.168.10.33 255.255.255.248
+Sat Mar 9 17:18:06 2024   Router0(2)   ISP(config-if)#no shutdown 
+Sat Mar 9 17:18:08 2024   Router0(2)   ISP(config-if)#do wr
+Sat Mar 9 17:18:09 2024   Router0(2)   ISP(config-if)#exit 
+Sat Mar 9 17:18:48 2024   Multilayer Switch0   LAN-A1(config)#interface gigabitEthernet 0/1
+Sat Mar 9 17:18:54 2024   Multilayer Switch0   LAN-A1(config-if)#no switchport 
+Sat Mar 9 17:19:07 2024   Multilayer Switch0   LAN-A1(config-if)#ip address 192.168.10.2 255.255.255.248
+Sat Mar 9 17:19:08 2024   Multilayer Switch0   LAN-A1(config-if)#no shutdown 
+Sat Mar 9 17:19:10 2024   Multilayer Switch0   LAN-A1(config-if)#exit 
+Sat Mar 9 17:19:11 2024   Multilayer Switch0   LAN-A1(config)#do wr
+Sat Mar 9 17:19:20 2024   Multilayer Switch0(2)   LAN-A2(config)#interface gigabitEthernet 0/1
+Sat Mar 9 17:19:26 2024   Multilayer Switch0(2)   LAN-A2(config-if)#no switchport 
+Sat Mar 9 17:19:38 2024   Multilayer Switch0(2)   LAN-A2(config-if)#ip address 192.168.10.10 255.255.255.248
+Sat Mar 9 17:19:41 2024   Multilayer Switch0(2)   LAN-A2(config-if)#no shutdown 
+Sat Mar 9 17:19:42 2024   Multilayer Switch0(2)   LAN-A2(config-if)#do wr
+Sat Mar 9 17:19:43 2024   Multilayer Switch0(2)   LAN-A2(config-if)#exit 
+Sat Mar 9 17:20:09 2024   Multilayer Switch0(1)   LAN-B1(config)#interface gigabitEthernet 0/1
+Sat Mar 9 17:20:09 2024   Multilayer Switch0(1)   LAN-B1(config-if)#no switchport
+Sat Mar 9 17:20:26 2024   Multilayer Switch0(1)   LAN-B1(config-if)#ip address 192.168.10.18 255.255.255.248
+Sat Mar 9 17:20:28 2024   Multilayer Switch0(1)   LAN-B1(config-if)#no shutdown 
+Sat Mar 9 17:20:30 2024   Multilayer Switch0(1)   LAN-B1(config-if)#do wr
+Sat Mar 9 17:20:33 2024   Multilayer Switch0(1)   LAN-B1(config-if)#exit 
+Sat Mar 9 17:20:39 2024   Multilayer Switch1(1)   LAN-B2(config)#interface gigabitEthernet 0/1
+Sat Mar 9 17:20:39 2024   Multilayer Switch1(1)   LAN-B2(config-if)#no switchport
+Sat Mar 9 17:20:51 2024   Multilayer Switch1(1)   LAN-B2(config-if)#ip address 192.168.10.26 255.255.255.248
+Sat Mar 9 17:20:53 2024   Multilayer Switch1(1)   LAN-B2(config-if)#no shutdown 
+Sat Mar 9 17:20:54 2024   Multilayer Switch1(1)   LAN-B2(config-if)#exit 
+Sat Mar 9 17:20:56 2024   Multilayer Switch1(1)   LAN-B2(config)#dow r
+Sat Mar 9 17:20:59 2024   Multilayer Switch1(1)   LAN-B2(config)#do wr
+Sat Mar 9 17:21:06 2024   Multilayer Switch1(1)(1)   LAN-C2(config)#en
+Sat Mar 9 17:21:10 2024   Multilayer Switch1(1)(1)   LAN-C2(config)#interface gigabitEthernet 0/1
+Sat Mar 9 17:21:10 2024   Multilayer Switch1(1)(1)   LAN-C2(config-if)#no switchport
+Sat Mar 9 17:21:25 2024   Multilayer Switch1(1)(1)   LAN-C2(config-if)#ip address 192.168.10.34 255.255.255.248
+Sat Mar 9 17:21:30 2024   Multilayer Switch1(1)(1)   LAN-C2(config-if)#no shutdown 
+Sat Mar 9 17:21:32 2024   Multilayer Switch1(1)(1)   LAN-C2(config-if)#do wr
+Sat Mar 9 17:21:33 2024   Multilayer Switch1(1)(1)   LAN-C2(config-if)#exit 
+Sat Mar 9 17:21:39 2024   Multilayer Switch0(1)(1)   LAN-C1(config)#interface gigabitEthernet 0/1
+Sat Mar 9 17:21:39 2024   Multilayer Switch0(1)(1)   LAN-C1(config-if)#no switchport
+Sat Mar 9 17:21:55 2024   Multilayer Switch0(1)(1)   LAN-C1(config-if)#ip address 192.168.10.41 255.255.255.248
+Sat Mar 9 17:21:58 2024   Multilayer Switch0(1)(1)   LAN-C1(config-if)#no shutdown 
+Sat Mar 9 17:21:59 2024   Multilayer Switch0(1)(1)   LAN-C1(config-if)#do wr
+Sat Mar 9 17:22:00 2024   Multilayer Switch0(1)(1)   LAN-C1(config-if)#exit 
+Sat Mar 9 17:25:45 2024   Router0   ISP(config)#interface gigabitEthernet 0/0/0
+Sat Mar 9 17:25:55 2024   Router0   ISP(config-if)#standby 1 priority 150
+Sat Mar 9 17:25:59 2024   Router0   ISP(config-if)#standby 1 preempt 
+Sat Mar 9 17:26:21 2024   Router0   ISP(config-if)#standby 1 ip 192.168.10.5
+Sat Mar 9 17:26:27 2024   Router0   ISP(config-if)#interface gigabitEthernet 0/0/1
+Sat Mar 9 17:26:29 2024   Router0   ISP(config-if)#standby 1 ip 192.168.10.5
+Sat Mar 9 17:26:33 2024   Router0   ISP(config-if)#standby 1 preempt 
+Sat Mar 9 17:26:39 2024   Router0   ISP(config-if)#standby 1 priority 100
+Sat Mar 9 17:27:10 2024   Router0   ISP(config-if)#standby 1 ip 192.168.10.7
+Sat Mar 9 17:27:15 2024   Router0   ISP(config-if)#interface gigabitEthernet 0/0/0
+Sat Mar 9 17:27:16 2024   Router0   ISP(config-if)#standby 1 ip 192.168.10.7
+Sat Mar 9 17:27:19 2024   Router0   ISP(config-if)#end
+Sat Mar 9 17:27:20 2024   Router0   ISP#write 
+Sat Mar 9 17:27:30 2024   Router0(1)   ISP(config-if)#exit 
+Sat Mar 9 17:27:33 2024   Router0(1)   ISP(config)#interface gigabitEthernet 0/0/0
+Sat Mar 9 17:27:39 2024   Router0(1)   ISP(config-if)#standby 1 priority 150
+Sat Mar 9 17:27:42 2024   Router0(1)   ISP(config-if)#standby 1 preempt 
+Sat Mar 9 17:28:00 2024   Router0(1)   ISP(config-if)#standby 1 ip 192.168.10.20
+Sat Mar 9 17:28:04 2024   Router0(1)   ISP(config-if)#interface gigabitEthernet 0/0/1
+Sat Mar 9 17:28:05 2024   Router0(1)   ISP(config-if)#standby 1 ip 192.168.10.20
+Sat Mar 9 17:28:08 2024   Router0(1)   ISP(config-if)#standby 1 preempt 
+Sat Mar 9 17:28:11 2024   Router0(1)   ISP(config-if)#standby 1 priority 150
+Sat Mar 9 17:28:14 2024   Router0(1)   ISP(config-if)#standby 1 priority 10
+Sat Mar 9 17:28:16 2024   Router0(1)   ISP(config-if)#standby 1 priority 100
+Sat Mar 9 17:28:19 2024   Router0(1)   ISP(config-if)#do wr
+Sat Mar 9 17:28:20 2024   Router0(1)   ISP(config-if)#exit 
+Sat Mar 9 17:28:41 2024   Router0(2)   ISP(config)#do sh ip int br
+Sat Mar 9 17:28:50 2024   Router0(2)   ISP(config)#interface gigabitEthernet 0/0/0
+Sat Mar 9 17:28:56 2024   Router0(2)   ISP(config-if)#standby 1 priority 150
+Sat Mar 9 17:29:00 2024   Router0(2)   ISP(config-if)#standby 1 preempt 
+Sat Mar 9 17:29:12 2024   Router0(2)   ISP(config-if)#standby 1 ip 192.168.10.45
+Sat Mar 9 17:29:17 2024   Router0(2)   ISP(config-if)#interface gigabitEthernet 0/0/1
+Sat Mar 9 17:29:19 2024   Router0(2)   ISP(config-if)#standby 1 ip 192.168.10.45
+Sat Mar 9 17:29:25 2024   Router0(2)   ISP(config-if)#standby 1 preempt 
+Sat Mar 9 17:29:31 2024   Router0(2)   ISP(config-if)#standby 1 priority 100
+Sat Mar 9 17:29:33 2024   Router0(2)   ISP(config-if)#end
+Sat Mar 9 17:29:34 2024   Router0(2)   ISP#write 
+Sat Mar 9 17:34:19 2024   Multilayer Switch0   LAN-A1(config)#router ospf 1
+Sat Mar 9 17:34:26 2024   Multilayer Switch0   LAN-A1(config-router)#router-id 192.168.10.2
+Sat Mar 9 17:34:28 2024   Multilayer Switch0   LAN-A1(config-router)#network 172.16.0.0 0.0.0.127 area 1 area 1
+Sat Mar 9 17:34:28 2024   Multilayer Switch0   LAN-A1(config-router)#network 172.16.0.128 0.0.0.127 area 1
+Sat Mar 9 17:34:28 2024   Multilayer Switch0   LAN-A1(config-router)#network 172.16.1.0 0.0.0.127 area 1
+Sat Mar 9 17:34:28 2024   Multilayer Switch0   LAN-A1(config-router)#network 172.16.1.128 0.0.0.127 area 1
+Sat Mar 9 17:34:43 2024   Multilayer Switch0   LAN-A1(config-router)#network 172.16.0.0 0.0.0.127 area 1
+Sat Mar 9 17:34:46 2024   Multilayer Switch0   LAN-A1(config-router)#log-adjacency-changes detail 
+Sat Mar 9 17:34:48 2024   Multilayer Switch0   LAN-A1(config-router)#do wr
+Sat Mar 9 17:34:49 2024   Multilayer Switch0   LAN-A1(config-router)#exit 
+Sat Mar 9 17:35:17 2024   Multilayer Switch0(2)   LAN-A2(config)#router ospf 1
+Sat Mar 9 17:35:25 2024   Multilayer Switch0(2)   LAN-A2(config-router)#router-id 192.168.10.10
+Sat Mar 9 17:35:33 2024   Multilayer Switch0(2)   LAN-A2(config-router)#do sh ip int br
+Sat Mar 9 17:35:41 2024   Multilayer Switch0(2)   LAN-A2(config-router)#network 172.16.0.0 0.0.0.127  area 1
+Sat Mar 9 17:35:41 2024   Multilayer Switch0(2)   LAN-A2(config-router)#network 172.16.0.128 0.0.0.127 area 1
+Sat Mar 9 17:35:41 2024   Multilayer Switch0(2)   LAN-A2(config-router)#network 172.16.1.0 0.0.0.127 area 1
+Sat Mar 9 17:35:41 2024   Multilayer Switch0(2)   LAN-A2(config-router)#network 172.16.1.128 0.0.0.127 area 1
+Sat Mar 9 17:35:43 2024   Multilayer Switch0(2)   LAN-A2(config-router)#log-adjacency-changes detail 
+Sat Mar 9 17:35:47 2024   Multilayer Switch0(2)   LAN-A2(config-router)#do wr
+Sat Mar 9 17:35:48 2024   Multilayer Switch0(2)   LAN-A2(config-router)#exit 
+Sat Mar 9 17:36:44 2024   Multilayer Switch0   LAN-A1(config)#router ospf 1
+Sat Mar 9 17:37:00 2024   Multilayer Switch0   LAN-A1(config-router)#network 192.168.10.0 0.0.0.7 area 1
+Sat Mar 9 17:37:02 2024   Multilayer Switch0   LAN-A1(config-router)#do wr
+Sat Mar 9 17:37:03 2024   Multilayer Switch0   LAN-A1(config-router)#exit 
+Sat Mar 9 17:37:11 2024   Multilayer Switch0(2)   LAN-A2(config)#router ospf 1
+Sat Mar 9 17:37:14 2024   Multilayer Switch0(2)   LAN-A2(config-router)#network 192.168.10.0 0.0.0.7 area 1
+Sat Mar 9 17:37:15 2024   Multilayer Switch0(2)   LAN-A2(config-router)#do wr
+Sat Mar 9 17:37:16 2024   Multilayer Switch0(2)   LAN-A2(config-router)#exit 
+Sat Mar 9 17:37:23 2024   Router0   ISP#configure terminal 
+Sat Mar 9 17:37:26 2024   Router0   ISP(config)#router ospf 1
+Sat Mar 9 17:37:35 2024   Router0   ISP(config-router)#router-id 192.168.10.9
+Sat Mar 9 17:37:39 2024   Router0   ISP(config-router)#log-adjacency-changes detail 
+Sat Mar 9 17:37:42 2024   Router0   ISP(config-router)#network 192.168.10.0 0.0.0.7 area 1
+Sat Mar 9 17:37:43 2024   Router0   ISP(config-router)#do wr
+Sat Mar 9 17:37:45 2024   Router0   ISP(config-router)#exit 
+Sat Mar 9 17:38:50 2024   Router0   ISP(config)#router ospf 1
+Sat Mar 9 17:39:01 2024   Router0   ISP(config-router)#network 192.168.10.8 0.0.0.7 area 1
+Sat Mar 9 17:39:03 2024   Router0   ISP(config-router)#end
+Sat Mar 9 17:39:04 2024   Router0   ISP#write 
+Sat Mar 9 17:39:13 2024   Multilayer Switch0(2)   LAN-A2(config)#router ospf 1
+Sat Mar 9 17:39:16 2024   Multilayer Switch0(2)   LAN-A2(config-router)#network 192.168.10.8 0.0.0.7 area 1
+Sat Mar 9 17:39:17 2024   Multilayer Switch0(2)   LAN-A2(config-router)#log-adjacency-changes detail 
+Sat Mar 9 17:39:19 2024   Multilayer Switch0(2)   LAN-A2(config-router)#do wr
+Sat Mar 9 17:39:20 2024   Multilayer Switch0(2)   LAN-A2(config-router)#exit 
+Sat Mar 9 17:39:52 2024   Multilayer Switch0(1)   LAN-B1(config)#router ospf 1
+Sat Mar 9 17:40:00 2024   Multilayer Switch0(1)   LAN-B1(config-router)#router-id 192.168.10.18
+Sat Mar 9 17:40:02 2024   Multilayer Switch0(1)   LAN-B1(config-router)#network 172.16.2.0 0.0.0.127  area 1
+Sat Mar 9 17:40:03 2024   Multilayer Switch0(1)   LAN-B1(config-router)#network 172.16.2.128 0.0.0.127 area 1
+Sat Mar 9 17:40:03 2024   Multilayer Switch0(1)   LAN-B1(config-router)#network 172.16.3.0 0.0.0.127 area 1
+Sat Mar 9 17:40:03 2024   Multilayer Switch0(1)   LAN-B1(config-router)#network 172.16.3.128 0.0.0.127 area 1
+Sat Mar 9 17:40:05 2024   Multilayer Switch0(1)   LAN-B1(config-router)#log-adjacency-changes detail 
+Sat Mar 9 17:40:05 2024   Multilayer Switch0(1)   LAN-B1(config-router)#7
+Sat Mar 9 17:40:23 2024   Multilayer Switch0(1)   LAN-B1(config-router)#network 192.168.10.16 0.0.0.7 area 1
+Sat Mar 9 17:40:25 2024   Multilayer Switch0(1)   LAN-B1(config-router)#log-adjacency-changes detail 
+Sat Mar 9 17:40:39 2024   Router0(1)   ISP(config)#router ospf 1
+Sat Mar 9 17:40:44 2024   Router0(1)   ISP(config-router)#router-id 192.168.10.17
+Sat Mar 9 17:40:47 2024   Router0(1)   ISP(config-router)#network 192.168.10.16 0.0.0.7 area 1
+Sat Mar 9 17:40:48 2024   Router0(1)   ISP(config-router)#log-adjacency-changes detail 
+Sat Mar 9 17:40:50 2024   Router0(1)   ISP(config-router)#do wr
+Sat Mar 9 17:40:51 2024   Router0(1)   ISP(config-router)#exit 
+Sat Mar 9 17:41:05 2024   Router0(1)   ISP(config)#router ospf 1
+Sat Mar 9 17:41:12 2024   Router0(1)   ISP(config-router)#network 192.168.10.24 0.0.0.7 area 1
+Sat Mar 9 17:41:17 2024   Router0(1)   ISP(config-router)#do wr
+Sat Mar 9 17:41:19 2024   Router0(1)   ISP(config-router)#exit 
+Sat Mar 9 17:41:37 2024   Multilayer Switch1(1)   LAN-B2(config)#router ospf 1
+Sat Mar 9 17:41:45 2024   Multilayer Switch1(1)   LAN-B2(config-router)#router-id 192.168.10.26
+Sat Mar 9 17:41:50 2024   Multilayer Switch1(1)   LAN-B2(config-router)#network 172.16.2.0 0.0.0.127  area 1
+Sat Mar 9 17:41:50 2024   Multilayer Switch1(1)   LAN-B2(config-router)#network 172.16.2.128 0.0.0.127 area 1
+Sat Mar 9 17:41:50 2024   Multilayer Switch1(1)   LAN-B2(config-router)#network 172.16.3.0 0.0.0.127 area 1
+Sat Mar 9 17:41:50 2024   Multilayer Switch1(1)   LAN-B2(config-router)#network 172.16.3.128 0.0.0.127 area 1
+Sat Mar 9 17:41:50 2024   Multilayer Switch1(1)   LAN-B2(config-router)#network 192.168.10.24 0.0.0.7 area 1
+Sat Mar 9 17:41:52 2024   Multilayer Switch1(1)   LAN-B2(config-router)#log-adjacency-changes detail 
+Sat Mar 9 17:41:54 2024   Multilayer Switch1(1)   LAN-B2(config-router)#do wr
+Sat Mar 9 17:41:56 2024   Multilayer Switch1(1)   LAN-B2(config-router)#exit 
+Sat Mar 9 17:44:30 2024   Multilayer Switch0(1)(1)   LAN-C1(config)#router ospf 1
+Sat Mar 9 17:44:45 2024   Multilayer Switch0(1)(1)   LAN-C1(config-router)#router-id 192.168.10.42
+Sat Mar 9 17:44:47 2024   Multilayer Switch0(1)(1)   LAN-C1(config-router)#network 172.16.4.0 0.0.0.63  area 1
+Sat Mar 9 17:44:47 2024   Multilayer Switch0(1)(1)   LAN-C1(config-router)#network 172.16.4.64 0.0.0.63 area 1
+Sat Mar 9 17:44:47 2024   Multilayer Switch0(1)(1)   LAN-C1(config-router)#network 172.16.4.128 0.0.0.63 area 1
+Sat Mar 9 17:44:47 2024   Multilayer Switch0(1)(1)   LAN-C1(config-router)#network 172.16.4.192 0.0.0.63 area 1 
+Sat Mar 9 17:44:47 2024   Multilayer Switch0(1)(1)   LAN-C1(config-router)#network 172.16.5.0 0.0.0.63 area 1
+Sat Mar 9 17:45:14 2024   Multilayer Switch0(1)(1)   LAN-C1(config-router)#network 192.168.10.40 0.0.0.7 area 1
+Sat Mar 9 17:45:16 2024   Multilayer Switch0(1)(1)   LAN-C1(config-router)#log-adjacency-changes detail 
+Sat Mar 9 17:45:18 2024   Multilayer Switch0(1)(1)   LAN-C1(config-router)#do wr
+Sat Mar 9 17:45:53 2024   Multilayer Switch1(1)(1)   LAN-C2(config)#router ospf 1
+Sat Mar 9 17:46:03 2024   Multilayer Switch1(1)(1)   LAN-C2(config-router)#router-id 192.168.10.34
+Sat Mar 9 17:46:05 2024   Multilayer Switch1(1)(1)   LAN-C2(config-router)#network 172.16.4.0 0.0.0.63  area 1
+Sat Mar 9 17:46:05 2024   Multilayer Switch1(1)(1)   LAN-C2(config-router)#network 172.16.4.64 0.0.0.63 area 1
+Sat Mar 9 17:46:05 2024   Multilayer Switch1(1)(1)   LAN-C2(config-router)#network 172.16.4.128 0.0.0.63 area 1
+Sat Mar 9 17:46:05 2024   Multilayer Switch1(1)(1)   LAN-C2(config-router)#network 172.16.4.192 0.0.0.63 area 1 
+Sat Mar 9 17:46:05 2024   Multilayer Switch1(1)(1)   LAN-C2(config-router)#network 172.16.5.0 0.0.0.63 area 1
+Sat Mar 9 17:46:07 2024   Multilayer Switch1(1)(1)   LAN-C2(config-router)#log-adjacency-changes detail 
+Sat Mar 9 17:46:09 2024   Multilayer Switch1(1)(1)   LAN-C2(config-router)#do wr
+Sat Mar 9 17:46:22 2024   Multilayer Switch1(1)(1)   LAN-C2(config-router)#network 192.168.10.32 0.0.0.7 area 1
+Sat Mar 9 17:46:24 2024   Multilayer Switch1(1)(1)   LAN-C2(config-router)#log-adjacency-changes detail 
+Sat Mar 9 17:46:26 2024   Multilayer Switch1(1)(1)   LAN-C2(config-router)#do wr
+Sat Mar 9 17:46:27 2024   Multilayer Switch1(1)(1)   LAN-C2(config-router)#exit 
+Sat Mar 9 17:47:16 2024   Router0(2)   ISP#configure terminal 
+Sat Mar 9 17:47:18 2024   Router0(2)   ISP(config)#router ospf 1
+Sat Mar 9 17:47:37 2024   Router0(2)   ISP(config-router)#router-id 192.168.10.41
+Sat Mar 9 17:47:39 2024   Router0(2)   ISP(config-router)#network 192.168.10.32 0.0.0.7 area 1
+Sat Mar 9 17:47:39 2024   Router0(2)   ISP(config-router)#network 192.168.10.40 0.0.0.7 area 1
+Sat Mar 9 17:47:42 2024   Router0(2)   ISP(config-router)#log-adjacency-changes detail 
+Sat Mar 9 17:47:44 2024   Router0(2)   ISP(config-router)#do wr
+Sat Mar 9 17:47:45 2024   Router0(2)   ISP(config-router)#end
